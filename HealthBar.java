@@ -28,4 +28,12 @@ public class HealthBar{
     public void takeHealth(int amount){
         currentHealth -= amount;
     }
+
+	public int getCurrentHealth(){
+		return currentHealth;
+	}
+
+    public void setCurrentHealth(int currentHealth) {
+        this.currentHealth = currentHealth;
+    }
 }

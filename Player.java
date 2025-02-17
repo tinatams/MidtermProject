@@ -19,8 +19,10 @@
 
 
 public class Player {
-    private int healthPoints;
+    private HealthBar health= new HealthBar();
     private String name;
+    private double x;
+    private double y;
 
 
     /** 
@@ -30,7 +32,6 @@ public class Player {
     **/
     public Player(String name){
         this.name = name;
-        healthPoints = 100; //temporary number
     }
 
     /** 
@@ -39,7 +40,12 @@ public class Player {
     healthPoints are instanciated at 100. 
     **/
     public void takeDamage(int amount){
-        healthPoints -= amount; 
+        health.setCurrentHealth(health.getCurrentHealth()-amount); 
+    }
+
+
+    public int getHeath(){
+        return health.getCurrentHealth();
     }
 
 }
