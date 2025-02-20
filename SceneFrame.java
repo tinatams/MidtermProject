@@ -4,8 +4,8 @@ import javax.swing.*;
 public class SceneFrame{
     private JFrame frame= new JFrame();;
     private Container c=frame.getContentPane();
-    private P1 scene1= new P1(0,0);
-    private P2 scene2= new P2(0,0);
+    private P1 scene1= new P1();
+    private P2 scene2= new P2();
     
     public void setUpGUI() throws Exception{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

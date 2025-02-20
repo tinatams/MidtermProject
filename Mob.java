@@ -4,12 +4,12 @@ import java.awt.geom.*;
 public class Mob {
     private int x;
     private int y;
-    private int size;
+    private double scale;
 
-    public Mob(int size, int x, int y) {
-        this.size = size;
+    public Mob(double scale, int x, int y) {
         this.x = x;
         this.y = y;
+        this.scale = scale;
     }
 
 
@@ -19,8 +19,10 @@ public class Mob {
         g2d.setRenderingHints(rh); //makes the rendering smoother
 
         AffineTransform reset = g2d.getTransform();
-        g2d.translate(-100, -50);
-
+        g2d.translate(-220, -130); //this sets the original placement
+        g2d.translate(x, y); //moves it to where it wants to be on screen
+        g2d.scale(scale, scale);
+        
         // base color body
         Path2D.Double baseBlob = new Path2D.Double();
         baseBlob.moveTo(285, 422);
@@ -241,5 +243,6 @@ public class Mob {
 
         // g2d.setTransform(reset);
     }
+
 
 }
