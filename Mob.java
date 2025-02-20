@@ -99,6 +99,8 @@ public class Mob {
 
         AffineTransform reset = g2d.getTransform();
         g2d.translate(-100, -50);
+        g2d.translate(x, y); //moves it to where it wants to be on screen
+        g2d.scale(scale, scale);
 
         //base color body
         Path2D.Double baseBlob = new Path2D.Double();
@@ -175,6 +177,8 @@ public class Mob {
 
         AffineTransform reset = g2d.getTransform();
         g2d.translate(-100, -50);
+        g2d.translate(x, y); //moves it to where it wants to be on screen
+        g2d.scale(scale, scale);
 
         //base color body
         Path2D.Double baseBlob = new Path2D.Double();

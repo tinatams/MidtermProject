@@ -48,4 +48,12 @@ public class Player {
         return health.getCurrentHealth();
     }
 
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
 }

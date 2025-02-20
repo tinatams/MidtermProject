@@ -6,6 +6,11 @@ public class SceneFrame{
     private Container c=frame.getContentPane();
     private P1 scene1= new P1();
     private P2 scene2= new P2();
+
+    //hit box boundary, for collisions with slime
+    private int mobTopBoundary;
+    private int mobBottomBoundary;
+
     
     public void setUpGUI() throws Exception{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -14,12 +19,12 @@ public class SceneFrame{
 
         Player user = new Player("user");
         Player npc = new Player("npc");
-        Container c=frame.getContentPane();
+        Container c = frame.getContentPane();
         KeyHandler kh = new KeyHandler();
         
         frame.addKeyListener(kh);
         while (true) {
-        if (kh.punch==true){ //and the hit box 
+        if (kh.punch==true){ //and the hit box <-- to set up the hitboxes we can go like && player location less than mob*Boundary [meaning it is in within the boundary]
             Punch.animate(user);
             Punch.damage(npc);
             c.setBackground(Color.red);
