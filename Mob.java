@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.awt.geom.*;
 
-public class Mob {
+public class Mob implements DrawingObject{
     private int x;
     private int y;
     private double scale;
@@ -12,6 +12,13 @@ public class Mob {
         this.scale = scale;
     }
 
+    public void draw(Graphics2D g2d){
+        drawFrame1(g2d);
+    }
+
+    public void adjustX(double distance){
+        x += distance;
+    }
 
     //idle frames: 
     public void drawFrame1(Graphics2D g2d){

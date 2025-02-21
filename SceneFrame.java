@@ -22,7 +22,19 @@ public class SceneFrame{
         Container c = frame.getContentPane();
         KeyHandler kh = new KeyHandler();
         
-        frame.addKeyListener(kh);
+        frame.addKeyListener(kh);   
+
+        
+
+
+
+
+
+
+
+
+
+
         while (true) {
         if (kh.punch==true){ //and the hit box <-- to set up the hitboxes we can go like && player location less than mob*Boundary [meaning it is in within the boundary]
             Punch.animate(user);
