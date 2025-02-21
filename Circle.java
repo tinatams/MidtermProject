@@ -1,9 +1,8 @@
 import java.awt.*;
 import java.awt.geom.*;
-import javax.swing.*;
 
 public class Circle implements DrawingObject {
-    private double x, y, w, h;
+    public double x, y, w, h;
 
     public Circle(double x, double y, double w, double h) {
         this.x = x;
@@ -19,10 +18,6 @@ public class Circle implements DrawingObject {
         g2d.fill(circle);
     }
 
-    @Override
-    public void adjustX(double distance) {
-
-    }
 
 
 }
