@@ -88,7 +88,7 @@ public class P2 extends JComponent{
         g2d.rotate(Math.toRadians(43),678.44+56.36/2,435.03+26.28/2);
         l_right_leg.draw(g2d);
 
-
+        g2d.setTransform(originalTransform);
     }
 
 }

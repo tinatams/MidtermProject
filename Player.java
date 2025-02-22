@@ -237,6 +237,7 @@ public class Player {
         g2d.rotate(Math.toRadians(43),678.44+x+56.36/2,435.03+y+26.28/2);
         l_right_leg.draw(g2d);
 
+        g2d.setTransform(originalTransform);
     }
 
     public int getVersion() {
