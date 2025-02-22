@@ -37,7 +37,7 @@ public class Player {
         this.x = x;
         this.y = y;
         version = 1;
-        speed = 10;
+        speed = 15;
 
     }
 

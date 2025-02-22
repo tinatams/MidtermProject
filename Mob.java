@@ -22,15 +22,15 @@ public class Mob {
         AffineTransform reset = g2d.getTransform();
 
         g2d.scale(-1, 1);
-
+        g2d.translate(-68, 60);
 
         if (version == 60){
             version = 1;
         }
         if (version <= 30){
-            drawFrame1(g2d);
+            drawFrame3(g2d);
         } else if (version < 60){
-            drawFrame2(g2d);
+            drawFrame1(g2d);
         } 
 
         version++;
@@ -49,7 +49,7 @@ public class Mob {
 
         AffineTransform reset = g2d.getTransform();
         g2d.translate(-220, -130); //this sets the original placement
-        g2d.translate(x, y); //moves it to where it wants to be on screen
+        g2d.translate(-x, y); //moves it to where it wants to be on screen
         g2d.scale(scale, scale);
 
         // base color body
@@ -128,7 +128,7 @@ public class Mob {
 
         AffineTransform reset = g2d.getTransform();
         g2d.translate(-220, -130); //this sets the original placement
-        g2d.translate(x, y); //moves it to where it wants to be on screen
+        g2d.translate(-x, y); //moves it to where it wants to be on screen
         g2d.scale(scale, scale);
 
         //base color body
@@ -206,7 +206,7 @@ public class Mob {
 
         AffineTransform reset = g2d.getTransform();
         g2d.translate(-220, -130); //this sets the original placement
-        g2d.translate(x, y); //moves it to where it wants to be on screen
+        g2d.translate(-x, y); //moves it to where it wants to be on screen
         g2d.scale(scale, scale);
 
         //base color body
