@@ -3,6 +3,7 @@ import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener {
     public boolean kick, punch, fireball, forward, backwards;
+    private Entity user, npc;
 
     @Override
     public void keyTyped(KeyEvent e) {

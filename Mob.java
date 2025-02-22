@@ -2,7 +2,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.*;
 
-public class Mob {
+public class Mob implements Entity, DrawingObject{
     // basic stuff
     private int x;
     private int y;
@@ -10,12 +10,33 @@ public class Mob {
     private int version;
     private int speed;
 
+    private boolean drawable; 
+    private HealthBar health= new HealthBar();
+
     public Mob(int x, int y, double scale) {
         this.x = x;
         this.y = y;
         this.scale = scale;
         version = 1;
         speed = 10;
+
+        drawable = true;
+    }
+
+    public void takeDamage(int amount){
+        health.setCurrentHealth(health.getCurrentHealth()-amount); 
+    }
+
+    public int getHealth(){
+        return health.getCurrentHealth();
+    }
+
+    public void setDrawable(boolean newSet){
+        drawable = newSet;
+    }
+
+    public boolean getDrawable(){
+        return drawable;
     }
 
     public void draw(Graphics2D g2d){
@@ -39,6 +60,10 @@ public class Mob {
 
     public void update(KeyEvent e){
         int code = e.getKeyCode();
+
+        if (health.getCurrentHealth() <= 0){
+            drawable = false;
+        }
 
 
     }
