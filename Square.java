@@ -2,7 +2,7 @@ import java.awt.*;
 import java.awt.geom.*;
 
 public class Square implements DrawingObject{
-    private double x, y, w, h;
+    public double x, y, w, h;
 
     public Square(double x, double y, double w, double h) {
         this.x = x;
@@ -17,8 +17,4 @@ public class Square implements DrawingObject{
         g2d.fill(square);
     }
 
-    @Override
-    public void adjustX(double distance) {
-
-    }
 }
