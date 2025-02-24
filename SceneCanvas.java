@@ -5,6 +5,7 @@ import javax.swing.*;
 public class SceneCanvas extends JComponent {
     Player user= new Player(0,-50);
     Mob npc = new Mob(40,270, 0.5);
+    HealthBar npcHealth = npc.getHealthBar();
     boolean ableAttack = false;
 
     @Override
@@ -15,6 +16,7 @@ public class SceneCanvas extends JComponent {
         g2d.setRenderingHints(rh); //makes the rendering smoother
 
         user.draw(g2d);
+        npcHealth.draw(g2d);
         if (npc.getDrawable()){
             npc.draw(g2d);  
         } 
@@ -42,6 +44,8 @@ public class SceneCanvas extends JComponent {
             Fireball.damage(npc);
             ableAttack = false;
         }
+
+        System.out.println(npc.getHealth());
     }
 
 

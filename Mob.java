@@ -11,7 +11,7 @@ public class Mob implements Entity, DrawingObject{
     private int speed;
 
     private boolean drawable; 
-    private HealthBar health= new HealthBar();
+    private HealthBar health= new HealthBar(this);
 
     public Mob(int x, int y, double scale) {
         this.x = x;
@@ -31,6 +31,10 @@ public class Mob implements Entity, DrawingObject{
         return health.getCurrentHealth();
     }
 
+    public HealthBar getHealthBar(){
+        return health;
+    }
+
     public void setDrawable(boolean newSet){
         drawable = newSet;
     }
@@ -45,9 +49,14 @@ public class Mob implements Entity, DrawingObject{
         g2d.scale(-1, 1);
         g2d.translate(-68, 60);
 
+        if (health.getCurrentHealth() <= 0){
+            drawable = false;
+        }
+
         if (version == 60){
             version = 1;
-        }
+        } 
+        
         if (version <= 30){
             drawFrame3(g2d);
         } else if (version < 60){
@@ -60,11 +69,6 @@ public class Mob implements Entity, DrawingObject{
 
     public void update(KeyEvent e){
         int code = e.getKeyCode();
-
-        if (health.getCurrentHealth() <= 0){
-            drawable = false;
-        }
-
 
     }
 

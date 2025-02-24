@@ -17,12 +17,16 @@
 	of my program.
 **/
 
-public class HealthBar{
+import java.awt.*;
+
+public class HealthBar implements DrawingObject{
     private final int MAX_HEALTH = 100;
     private int currentHealth;
+	private Entity owner;
 
-    public HealthBar(){
+    public HealthBar(Entity owner){
         currentHealth = MAX_HEALTH;
+		this.owner = owner;
     }
 
     public void takeHealth(int amount){
@@ -36,4 +40,14 @@ public class HealthBar{
     public void setCurrentHealth(int currentHealth) {
         this.currentHealth = currentHealth;
     }
+
+	public void draw(Graphics2D g2d){
+		Square background = new Square(0, 0, MAX_HEALTH * 2, 20);
+		Square currentPoints = new Square(0, 0, currentHealth * 2, 20);
+
+
+		background.draw(g2d, Color.GRAY);
+		currentPoints.draw(g2d, Color.BLUE);
+
+	}
 }

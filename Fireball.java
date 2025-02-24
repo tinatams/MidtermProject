@@ -4,6 +4,6 @@ public class Fireball implements Attack {
     }
 
     public static void animate(Entity attacker){
-
+        
     }
 }
