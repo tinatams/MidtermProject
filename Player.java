@@ -41,6 +41,9 @@ public class Player implements Entity, DrawingObject{
 
     }
 
+    public double getX(){
+        return x;
+    }
 
     public void draw(Graphics2D g2d){
         if (version == 60 || version ==130){
@@ -67,11 +70,10 @@ public class Player implements Entity, DrawingObject{
         version++;
         
     }
-    
     public void takeDamage(int amount){
         health.setCurrentHealth(health.getCurrentHealth()-amount); 
     }
-    
+
 
     public int getHeath(){
         return health.getCurrentHealth();
@@ -253,6 +255,7 @@ public class Player implements Entity, DrawingObject{
         g2d.rotate(Math.toRadians(43),678.44+x+56.36/2,435.03+y+26.28/2);
         l_right_leg.draw(g2d);
 
+        g2d.setTransform(originalTransform);
     }
 
     public void PunchFrame1(Graphics2D g2d){
@@ -341,6 +344,7 @@ public class Player implements Entity, DrawingObject{
         g2d.rotate(Math.toRadians(43),678.44+x+56.36/2,435.03+y+26.28/2);
         l_right_leg.draw(g2d);
 
+        g2d.setTransform(originalTransform);
     }
 
     public void PunchFrame2(Graphics2D g2d){
@@ -423,6 +427,7 @@ public class Player implements Entity, DrawingObject{
         g2d.rotate(Math.toRadians(43),678.44+x+56.36/2,435.03+y+26.28/2);
         l_right_leg.draw(g2d);
 
+        g2d.setTransform(originalTransform);
     }
 
     public int getVersion() {
@@ -431,10 +436,6 @@ public class Player implements Entity, DrawingObject{
 
     public void setVersion(int version) {
         this.version = version;
-    }
-
-    public int getX() {
-        return x;
     }
 }
 
