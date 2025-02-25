@@ -4,7 +4,6 @@ import javax.swing.*;
 
 public class SceneCanvas extends JComponent {
     Player user= new Player(0,-50);
-    Mob npc = new Mob(40,270, 0.5);
 
     @Override
     protected void paintComponent(Graphics g){
@@ -14,7 +13,6 @@ public class SceneCanvas extends JComponent {
         g2d.setRenderingHints(rh); //makes the rendering smoother
 
         user.draw(g2d);
-        npc.draw(g2d);
     }
 
     public void update(KeyEvent e){
