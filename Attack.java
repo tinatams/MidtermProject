@@ -1,4 +1,4 @@
 public interface Attack{
-    public static void damage(Player attacked){};
-    public static void animate(Player attacker){};
+    public static void damage(Entity attacked){};
+    public static void animate(Entity attacker){};
 }

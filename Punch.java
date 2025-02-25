@@ -1,9 +1,9 @@
 public class Punch implements Attack {
-    public static void damage(Player attacked){
+    public static void damage(Entity attacked){
         attacked.takeDamage(10);
     }
 
-    public static void animate(Player attacker){
+    public static void animate(Entity attacker){
 
     }
 }

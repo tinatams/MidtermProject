@@ -20,8 +20,8 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.geom.AffineTransform;
 
-public class Player {
-    private HealthBar health= new HealthBar();
+public class Player implements Entity, DrawingObject{
+    private HealthBar health= new HealthBar(this);
     private String name;
 
     private int x;
@@ -67,10 +67,11 @@ public class Player {
         version++;
         
     }
+    
     public void takeDamage(int amount){
         health.setCurrentHealth(health.getCurrentHealth()-amount); 
     }
-
+    
 
     public int getHeath(){
         return health.getCurrentHealth();
@@ -430,6 +431,10 @@ public class Player {
 
     public void setVersion(int version) {
         this.version = version;
+    }
+
+    public int getX() {
+        return x;
     }
 }
 
