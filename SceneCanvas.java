@@ -44,8 +44,6 @@ public class SceneCanvas extends JComponent {
             Fireball.damage(npc);
             ableAttack = false;
         }
-
-        System.out.println(npc.getHealth());
     }
 
 
