@@ -44,6 +44,10 @@ public class SceneCanvas extends JComponent {
             Fireball.damage(npc);
             ableAttack = false;
         }
+
+        if (npc.getHealth() <= 0){
+            npc.setVersion(70);
+        }
     }
 
 

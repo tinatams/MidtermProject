@@ -43,35 +43,41 @@ public class Mob implements Entity, DrawingObject{
         return drawable;
     }
 
+    public void setVersion(int newVersion){
+        version = newVersion;
+    }
+
     public void draw(Graphics2D g2d){
         AffineTransform reset = g2d.getTransform();
 
         g2d.scale(-1, 1);
         g2d.translate(-68, 60);
 
-        // if (health.getCurrentHealth() <= 0){
-        //     drawable = false;
-        // }
-
-        // if (version == 60){
-        //     version = 1;
-        // } 
+        if (version == 60){
+            version = 1;
+        } 
         
-        // if (version <= 30){
-        //     drawFrame3(g2d);
-        // } else if (version < 60){
-        //     drawFrame1(g2d);
-        // } 
+        if (version <= 30){
+            drawFrame3(g2d);
+        } else if (version < 60){
+            drawFrame1(g2d);
+        } else if (version < 100){
+            drawDyingFrame1(g2d);
+        } else if (version < 120){
+            drawDyingFrame2(g2d);
+        } else if (version < 140){
+            drawDyingFrame3(g2d);
+        } else if (version > 160){
+            drawable = false;
+        }
 
-        //version++;
+        version++;
 
-        drawDyingFrame3(g2d);
         g2d.setTransform(reset);
     }
 
     public void update(KeyEvent e){
         int code = e.getKeyCode();
-
     }
 
     public void drawFrame1(Graphics2D g2d){
