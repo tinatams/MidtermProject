@@ -49,21 +49,23 @@ public class Mob implements Entity, DrawingObject{
         g2d.scale(-1, 1);
         g2d.translate(-68, 60);
 
-        if (health.getCurrentHealth() <= 0){
-            drawable = false;
-        }
+        // if (health.getCurrentHealth() <= 0){
+        //     drawable = false;
+        // }
 
-        if (version == 60){
-            version = 1;
-        } 
+        // if (version == 60){
+        //     version = 1;
+        // } 
         
-        if (version <= 30){
-            drawFrame3(g2d);
-        } else if (version < 60){
-            drawFrame1(g2d);
-        } 
+        // if (version <= 30){
+        //     drawFrame3(g2d);
+        // } else if (version < 60){
+        //     drawFrame1(g2d);
+        // } 
 
-        version++;
+        //version++;
+
+        drawDyingFrame3(g2d);
         g2d.setTransform(reset);
     }
 
@@ -302,6 +304,181 @@ public class Mob implements Entity, DrawingObject{
         Ellipse2D.Double mouth = new Ellipse2D.Double(349.8, 344.1, 20.4, 23.3);
         g2d.setColor(new Color(159, 23, 23));
         g2d.fill(mouth);
+
+        g2d.setTransform(reset);
+    }
+
+    public void drawDyingFrame1(Graphics2D g2d){
+        RenderingHints rh = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2d.setRenderingHints(rh); //makes the rendering smoother
+
+        AffineTransform reset = g2d.getTransform();
+        g2d.translate(-220, -130); //this sets the original placement
+        g2d.translate(-x, y); //moves it to where it wants to be on screen
+        g2d.scale(scale, scale);
+
+        //base color body
+        Path2D.Double baseBlob = new Path2D.Double();
+        baseBlob.moveTo(316, 421.7);
+        baseBlob.curveTo(210, 397.7, 252.6, 234, 326.6, 158.6);
+        baseBlob.curveTo(368, 125, 409, 125.9, 446.3, 146.3);
+        baseBlob.curveTo(462.9, 136.3, 458.5, 119.6, 466.4, 118.6);
+        baseBlob.curveTo(476.4, 115.1, 478.3, 148, 476.96, 160.16);
+        baseBlob.curveTo(502.75, 150.2, 500.4, 129, 507.6, 129.2);
+        baseBlob.curveTo(522.8, 121.9, 519.9, 196.6, 500.7, 206.4);
+        baseBlob.curveTo(541.5, 286.7, 570.7, 377.5, 493, 417.8);
+        baseBlob.curveTo(456, 429, 377, 437.7, 316, 421.7);
+        baseBlob.closePath();
+
+        g2d.setColor(new Color(255,87,87));
+        g2d.fill(baseBlob);
+
+        //fill mid tones
+        Path2D.Double midColor = new Path2D.Double();
+        midColor.moveTo(313.4, 411);
+        midColor.curveTo(205.5, 375.8, 298, 170.2, 355.9, 156.2);
+        midColor.lineTo(355.4, 155.3);
+        midColor.curveTo(376.8, 143.5, 428.6, 140, 459.3, 172.8);
+        midColor.curveTo( 503.4, 172, 495.2, 136.9, 511.7, 148.9);
+        midColor.curveTo(513.3, 169.3, 496.6, 194.6, 489.4, 209.2);
+        midColor.curveTo(530.6, 289.4, 534.5, 329.5, 527, 358.5);
+        midColor.curveTo(519.5, 377.7, 507, 420.8, 430.7, 418.9);
+        midColor.curveTo(391, 422, 348, 419.7, 313.4, 411);
+        midColor.closePath();
+
+        Path2D.Double midColor2 = new Path2D.Double();
+        midColor2.moveTo(451.8, 150.6);
+        midColor2.curveTo(460.5, 145.5, 462.6, 130.4, 469.2, 133.5);
+        midColor2.curveTo(476.4, 134.7, 471.1, 158.3, 469.8, 160.74);
+        midColor2.curveTo(464.3, 161.2, 456.8, 156.3, 451.8, 150.6);
+         
+        g2d.setColor(new Color(255, 145, 77));
+        g2d.fill(midColor);
+        g2d.fill(midColor2);
+
+        //highlights
+        Path2D.Double highlight1 = new Path2D.Double();
+        highlight1.moveTo(325.5, 199);
+        highlight1.curveTo(346.9, 208.6, 375.5, 181.4, 368.7, 170);
+        highlight1.curveTo(354.9, 156.6, 314, 182.3, 325.5, 199);
+        highlight1.closePath();
+
+        Ellipse2D.Double highlight2 = new Ellipse2D.Double(380, 158.9, 10.5, 8.8);
+        g2d.setColor(new Color(255, 189, 89));
+        g2d.fill(highlight1);
+        g2d.fill(highlight2);
+
+        //mouth
+        Ellipse2D.Double mouth = new Ellipse2D.Double(373.5, 294.7, 20.4, 23.3);
+        g2d.setColor(new Color(159, 23, 23));
+        g2d.fill(mouth);
+
+        g2d.setTransform(reset);
+    }
+
+    public void drawDyingFrame2(Graphics2D g2d){
+        RenderingHints rh = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2d.setRenderingHints(rh); //makes the rendering smoother
+
+        AffineTransform reset = g2d.getTransform();
+        g2d.translate(-220, -130); //this sets the original placement
+        g2d.translate(-x, y); //moves it to where it wants to be on screen
+        g2d.scale(scale, scale);
+
+        //base color body
+        Path2D.Double baseBlob = new Path2D.Double();
+        baseBlob.moveTo(296.6, 432.4);
+        baseBlob.curveTo(153, 415, 203, 302, 293.8, 231);
+        baseBlob.curveTo(353.6, 195.5, 458.7, 186.4, 527, 243.3);
+        baseBlob.curveTo(580, 290, 662.3, 386.6, 546, 426.3);
+        baseBlob.curveTo(481, 442, 381, 444, 296.6, 432.4);
+        g2d.setColor(new Color(255,87,87));
+        g2d.fill(baseBlob);
+
+        //midColor
+        Path2D.Double midColor = new Path2D.Double();
+        midColor.moveTo(300, 424.8);
+        midColor.curveTo(168.3, 404, 230.8, 300, 291.9, 249.5);
+        midColor.curveTo(352.3, 206.5, 459, 198.2, 526.6, 260.1);
+        midColor.curveTo(573.7, 306.6, 632.3, 383.5, 535.8, 420);
+        midColor.curveTo(459, 433, 368.2, 433, 300, 424.8);
+        midColor.closePath();
+        
+        midColor.closePath();
+        g2d.setColor(new Color(255, 145, 77));
+        g2d.fill(midColor);
+
+        g2d.translate(0, 10);
+        Path2D.Double highlight1 = new Path2D.Double();
+        highlight1.moveTo(304.3, 259.1);
+        highlight1.curveTo(320.6, 265.2, 358.1, 238.6, 351.5, 229.8);
+        highlight1.curveTo(339.4, 219.8, 294.2, 248.8 ,304.3, 259.1);
+        highlight1.closePath();
+
+        
+        Path2D.Double highlight2 = new Path2D.Double();
+        highlight2.moveTo(359.8, 230.5);
+        highlight2.curveTo(355.9, 228.4, 363.4, 220.1, 368.75, 222.95);
+        highlight2.curveTo(371.42, 229.95, 362.2, 231.8, 359.8, 230.5);
+        highlight2.closePath();
+
+        g2d.setColor(new Color(255, 189, 89));
+        g2d.fill(highlight1);
+        g2d.fill(highlight2);
+
+        g2d.setTransform(reset);
+    }
+
+    public void drawDyingFrame3(Graphics2D g2d){
+        RenderingHints rh = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2d.setRenderingHints(rh); //makes the rendering smoother
+
+        AffineTransform reset = g2d.getTransform();
+        g2d.translate(-220, -130); //this sets the original placement
+        g2d.translate(-x, y); //moves it to where it wants to be on screen
+        g2d.scale(scale, scale);
+
+        //base color body
+        Ellipse2D.Double base1 = new Ellipse2D.Double(354.4, 329.3, 180, 90);
+        Ellipse2D.Double base2 = new Ellipse2D.Double(224.5, 352, 180, 90);
+        Ellipse2D.Double base3 = new Ellipse2D.Double(354.4, 397, 143.9, 72);
+        Ellipse2D.Double base4 = new Ellipse2D.Double(467.5, 352, 108, 54);
+
+        g2d.setColor(new Color(255,87,87));
+        g2d.fill(base1);
+        g2d.fill(base2);
+        g2d.fill(base3);
+        g2d.fill(base4);
+
+        // MID COLOR
+        Ellipse2D.Double mid1 = new Ellipse2D.Double(244.2, 358.2, 143.8, 65.8);
+        Ellipse2D.Double mid2 = new Ellipse2D.Double(367, 333.1, 154.5, 73.2);
+        Ellipse2D.Double mid3 = new Ellipse2D.Double(364.5, 395.7, 122.3, 60.7);
+        Ellipse2D.Double mid4 = new Ellipse2D.Double(480.9, 356.2, 87.1, 39.5);
+        Ellipse2D.Double mid5 = new Ellipse2D.Double(370, 389.1, 46.3, 22.7);    
+
+        g2d.setColor(new Color(255, 145, 77));
+        g2d.fill(mid1);
+        g2d.fill(mid2);
+        g2d.fill(mid3);
+        g2d.fill(mid4);
+        g2d.fill(mid5);
+
+        //HIGHLIGHTS
+        Path2D.Double highlight1 = new Path2D.Double();
+        highlight1.moveTo(257.3, 388.6);
+        highlight1.curveTo(267.46, 391.26, 287.2, 380.8, 283.44, 374.2);
+        highlight1.curveTo(275.34, 369.26, 249.84, 383.9, 257.3, 388.6);
+        highlight1.closePath();
+
+        highlight1.moveTo(383, 364.7);
+        highlight1.curveTo(377.3, 361.43, 402.8, 345, 409.77, 351.4);
+        highlight1.curveTo(413.74, 358.44, 391.23, 369.64, 383, 364.7);
+        highlight1.closePath();
+
+        g2d.setColor(new Color(255, 189, 89));
+        g2d.fill(highlight1);
+        g2d.fill(highlight1);
 
         g2d.setTransform(reset);
     }
