@@ -9,7 +9,7 @@ public class SceneCanvas extends JComponent {
     Mob npc = new Mob(40,270, 0.5);
     HealthBar npcHealth = npc.getHealthBar();
     boolean ableAttack = false;
-    boolean allowAttack = true;
+    boolean scheduleAttack = false;
 
     Random rand = new Random();
     
@@ -27,24 +27,8 @@ public class SceneCanvas extends JComponent {
             npc.draw(g2d);  
         } 
 
-        if (rand.nextInt(300) == 1 && allowAttack){
-            if (ableAttack){
-                Fireball.damage(user);
-            }
-
-            npc.setVersion(61);
-            System.err.println("fireBalll");
-            allowAttack = false;
-
-            Timer timer = new Timer();
-            TimerTask task = new TimerTask(){
-                @Override 
-                public void run(){
-                    allowAttack = true;
-                    System.out.println("attacks allowd");
-                }
-            };
-            timer.schedule(task, 10000);
+        if (!scheduleAttack){
+            scheduleAttack();
         }
     }
 
@@ -75,8 +59,22 @@ public class SceneCanvas extends JComponent {
             npc.setVersion(151);
         }
 
+    }
 
+    public void scheduleAttack(){
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask(){
+            @Override 
+            public void run(){
+                Fireball.damage(user);
+                npc.setVersion(61);
+                scheduleAttack = false;
+            }
+        };
 
+        int randomInterval = (rand.nextInt(10-3) + 3)*1000;
+        timer.schedule(task, randomInterval );
+        scheduleAttack = true;
     }
 
 }
