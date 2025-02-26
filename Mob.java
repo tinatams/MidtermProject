@@ -11,7 +11,8 @@ public class Mob implements Entity, DrawingObject{
     private int speed;
 
     private boolean drawable; 
-    private HealthBar health= new HealthBar(this);
+    private boolean dead;
+    private HealthBar health= new HealthBar(this, 15, 15);
 
     public Mob(int x, int y, double scale) {
         this.x = x;
@@ -21,6 +22,7 @@ public class Mob implements Entity, DrawingObject{
         speed = 10;
 
         drawable = true;
+        dead = false;
     }
 
     public void takeDamage(int amount){
@@ -29,6 +31,10 @@ public class Mob implements Entity, DrawingObject{
 
     public int getHealth(){
         return health.getCurrentHealth();
+    }
+
+    public boolean dead(){
+       return dead; 
     }
 
     public HealthBar getHealthBar(){
@@ -53,7 +59,7 @@ public class Mob implements Entity, DrawingObject{
         g2d.scale(-1, 1);
         g2d.translate(-68, 60);
 
-        if (version == 60 || version == 150){
+        if (version == 60 || version == 180){
             version = 1;
         } 
         
@@ -64,20 +70,27 @@ public class Mob implements Entity, DrawingObject{
         } 
         
         else if (version < 90){
-            drawFrame2(g2d);
-        } else if (version < 120){
-            drawFrame3(g2d);
-        } else if (version < 150){
             drawFrame1(g2d);
+            drawFire1(g2d, 90, 1);
+        } else if (version < 120){
+            drawFrame2(g2d);
+            drawFire1(g2d, 100, -50);
+        } else if (version < 150){
+            drawFrame3(g2d);
+            drawFire1(g2d, 110, -100);
+        } else if (version < 180){
+            drawFrame1(g2d);
+            drawFire1(g2d, 70, -150);
         } 
         
-        else if (version < 170){
+        else if (version < 210){
             drawDyingFrame1(g2d);
-        } else if (version < 190){
+            dead = true;
+        } else if (version < 230){
             drawDyingFrame2(g2d);
-        } else if (version < 210){
+        } else if (version < 250){
             drawDyingFrame3(g2d);
-        } else if (version > 230){
+        } else if (version > 250){
             drawable = false;
         }
 
@@ -495,6 +508,21 @@ public class Mob implements Entity, DrawingObject{
         g2d.setColor(new Color(255, 189, 89));
         g2d.fill(highlight1);
         g2d.fill(highlight1);
+
+        g2d.setTransform(reset);
+    }
+
+    public void drawFire1(Graphics2D g2d, int size, int forWard){
+        RenderingHints rh = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2d.setRenderingHints(rh); //makes the rendering smoother
+
+        AffineTransform reset = g2d.getTransform();
+        g2d.translate(-220, -130); //this sets the original placement
+        g2d.translate(-x, y); //moves it to where it wants to be on screen
+        g2d.scale(scale, scale);
+
+        Circle fire = new Circle(250 + forWard, 265.7, size, size);
+        fire.draw(g2d);
 
         g2d.setTransform(reset);
     }

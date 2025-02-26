@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.awt.geom.*;
 import java.util.*;
 import java.util.Timer;
 import javax.swing.*;
@@ -8,6 +9,7 @@ public class SceneCanvas extends JComponent {
     Player user= new Player(0,-50);
     Mob npc = new Mob(40,270, 0.5);
     HealthBar npcHealth = npc.getHealthBar();
+    HealthBar userHealth = user.getHealthBar();
     boolean ableAttack = false;
     boolean scheduleAttack = false;
 
@@ -22,12 +24,19 @@ public class SceneCanvas extends JComponent {
         g2d.setRenderingHints(rh); //makes the rendering smoother
 
         user.draw(g2d);
+        
+        AffineTransform reset = g2d.getTransform();
+        g2d.scale(-1, 1);
+        userHealth.draw(g2d);
+        g2d.setTransform(reset);
+
         npcHealth.draw(g2d);
+
         if (npc.getDrawable()){
             npc.draw(g2d);  
         } 
 
-        if (!scheduleAttack){
+        if (!scheduleAttack && (npc.dead()!= true)){
             scheduleAttack();
         }
     }
@@ -46,17 +55,15 @@ public class SceneCanvas extends JComponent {
 
         if (code == KeyEvent.VK_Z && ableAttack){
             Kick.damage(npc);
-            ableAttack = false;
         } else if (code == KeyEvent.VK_X && ableAttack){
             Punch.damage(npc);
-            ableAttack = false;
         } else if (code == KeyEvent.VK_C && ableAttack){
             Fireball.damage(npc);
-            ableAttack = false;
         }
 
         if (npc.getHealth() <= 0){
-            npc.setVersion(151);
+            npc.setVersion(181);
+            npc.dead();
         }
 
     }
@@ -66,9 +73,12 @@ public class SceneCanvas extends JComponent {
         TimerTask task = new TimerTask(){
             @Override 
             public void run(){
-                Fireball.damage(user);
-                npc.setVersion(61);
-                scheduleAttack = false;
+                if (npc.dead() != true){
+                    npc.setVersion(61);
+                    if (ableAttack) Fireball.damage(user);
+                    scheduleAttack = false;
+                    System.out.println("fireball");
+                }
             }
         };
 

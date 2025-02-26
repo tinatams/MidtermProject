@@ -21,7 +21,7 @@ import java.awt.event.KeyEvent;
 import java.awt.geom.AffineTransform;
 
 public class Player implements Entity, DrawingObject{
-    private HealthBar health= new HealthBar(this);
+    private HealthBar health= new HealthBar(this, -785, 15);
     private String name;
 
     private int x;
@@ -77,6 +77,10 @@ public class Player implements Entity, DrawingObject{
 
     public int getHeath(){
         return health.getCurrentHealth();
+    }
+
+    public HealthBar getHealthBar(){
+        return health;
     }
 
     public void update(KeyEvent e){

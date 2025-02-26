@@ -24,10 +24,14 @@ public class HealthBar implements DrawingObject{
     private int currentHealth;
 	private Entity owner;
 
-    public HealthBar(Entity owner){
+	private double x, y;
+
+    public HealthBar(Entity owner, int x, int y){
         currentHealth = MAX_HEALTH;
 		this.owner = owner;
-    }
+		this.x = x;
+		this.y = y;
+	}
 
     public void takeHealth(int amount){
         currentHealth -= amount;
@@ -42,12 +46,21 @@ public class HealthBar implements DrawingObject{
     }
 
 	public void draw(Graphics2D g2d){
-		Square background = new Square(0, 0, MAX_HEALTH * 2, 20);
-		Square currentPoints = new Square(0, 0, currentHealth * 2, 20);
+		Square background = new Square(0 + x, 0 + y, MAX_HEALTH * 2.5, 25);
+		Square currentPoints = new Square(0 + x, 0 + y, currentHealth * 2.5, 25);
 
 
 		background.draw(g2d, Color.GRAY);
-		currentPoints.draw(g2d, Color.BLUE);
+		if (currentHealth >= 75){
+			currentPoints.draw(g2d, Color.GREEN);
+		} else if (currentHealth >= 50){
+			currentPoints.draw(g2d, Color.YELLOW);
+		} else if (currentHealth >= 25){
+			currentPoints.draw(g2d, Color.ORANGE);
+		} else if (currentHealth >= 10){
+			currentPoints.draw(g2d, Color.RED);
+		}
+			
 
 	}
 }
