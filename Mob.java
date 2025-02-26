@@ -53,7 +53,7 @@ public class Mob implements Entity, DrawingObject{
         g2d.scale(-1, 1);
         g2d.translate(-68, 60);
 
-        if (version == 60){
+        if (version == 60 || version == 150){
             version = 1;
         } 
         
@@ -61,13 +61,23 @@ public class Mob implements Entity, DrawingObject{
             drawFrame3(g2d);
         } else if (version < 60){
             drawFrame1(g2d);
-        } else if (version < 100){
-            drawDyingFrame1(g2d);
+        } 
+        
+        else if (version < 90){
+            drawFrame2(g2d);
         } else if (version < 120){
+            drawFrame3(g2d);
+        } else if (version < 150){
+            drawFrame1(g2d);
+        } 
+        
+        else if (version < 170){
+            drawDyingFrame1(g2d);
+        } else if (version < 190){
             drawDyingFrame2(g2d);
-        } else if (version < 140){
+        } else if (version < 210){
             drawDyingFrame3(g2d);
-        } else if (version > 160){
+        } else if (version > 230){
             drawable = false;
         }
 

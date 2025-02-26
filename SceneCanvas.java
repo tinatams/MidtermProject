@@ -1,5 +1,7 @@
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.*;
+import java.util.Timer;
 import javax.swing.*;
 
 public class SceneCanvas extends JComponent {
@@ -7,6 +9,10 @@ public class SceneCanvas extends JComponent {
     Mob npc = new Mob(40,270, 0.5);
     HealthBar npcHealth = npc.getHealthBar();
     boolean ableAttack = false;
+    boolean allowAttack = true;
+
+    Random rand = new Random();
+    
 
     @Override
     protected void paintComponent(Graphics g){
@@ -20,6 +26,26 @@ public class SceneCanvas extends JComponent {
         if (npc.getDrawable()){
             npc.draw(g2d);  
         } 
+
+        if (rand.nextInt(300) == 1 && allowAttack){
+            if (ableAttack){
+                Fireball.damage(user);
+            }
+
+            npc.setVersion(61);
+            System.err.println("fireBalll");
+            allowAttack = false;
+
+            Timer timer = new Timer();
+            TimerTask task = new TimerTask(){
+                @Override 
+                public void run(){
+                    allowAttack = true;
+                    System.out.println("attacks allowd");
+                }
+            };
+            timer.schedule(task, 10000);
+        }
     }
 
     public void update(KeyEvent e){
@@ -46,9 +72,11 @@ public class SceneCanvas extends JComponent {
         }
 
         if (npc.getHealth() <= 0){
-            npc.setVersion(70);
+            npc.setVersion(151);
         }
-    }
 
+
+
+    }
 
 }
