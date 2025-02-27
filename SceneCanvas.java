@@ -47,13 +47,9 @@ public class SceneCanvas extends JComponent {
 
         if(user.getX() < -300){
             ableAttack = true;
-            // need to find a way to make a timer for this so that when an action is committed it starts
-            // a timer of something and then after a certain amount of time the player can attack again.
         }
         else{
             ableAttack = false;
-            // need to find a way to make a timer for this so that when an action is committed it starts
-            // a timer of something and then after a certain amount of time the player can attack again.
         }
 
         int code = e.getKeyCode();

@@ -46,20 +46,20 @@ public class HealthBar implements DrawingObject{
     }
 
 	public void draw(Graphics2D g2d){
-		Square background = new Square(0 + x, 0 + y, MAX_HEALTH * 2.5, 25);
+		Square background = new Square(0 + x, 0 + y, MAX_HEALTH * 2.5, 25, Color.GRAY);
 		Square currentPoints = new Square(0 + x, 0 + y, currentHealth * 2.5, 25);
 
-
-		background.draw(g2d, Color.GRAY);
 		if (currentHealth >= 75){
-			currentPoints.draw(g2d, Color.GREEN);
+			currentPoints = new Square(0 + x, 0 + y, currentHealth * 2.5, 25, Color.GREEN);
 		} else if (currentHealth >= 50){
-			currentPoints.draw(g2d, Color.YELLOW);
+			currentPoints = new Square(0 + x, 0 + y, currentHealth * 2.5, 25, Color.YELLOW);
 		} else if (currentHealth >= 25){
-			currentPoints.draw(g2d, Color.ORANGE);
+			currentPoints = new Square(0 + x, 0 + y, currentHealth * 2.5, 25, Color.ORANGE);
 		} else if (currentHealth >= 10){
-			currentPoints.draw(g2d, Color.RED);
+			currentPoints = new Square(0 + x, 0 + y, currentHealth * 2.5, 25, Color.RED);
 		}
+		background.draw(g2d);
+		currentPoints.draw(g2d);
 			
 
 	}
