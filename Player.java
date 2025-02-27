@@ -20,7 +20,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.geom.AffineTransform;
 
-public class Player implements Entity, DrawingObject{
+public class Player {
     private HealthBar health= new HealthBar(this, -785, 15);
     private String name;
 
@@ -41,12 +41,9 @@ public class Player implements Entity, DrawingObject{
 
     }
 
-    public double getX(){
-        return x;
-    }
 
     public void draw(Graphics2D g2d){
-        if (version == 60 || version ==130){
+        if (version == 60 || version ==130 || version==200){
             version = 1;
         }
         if (version <= 30){
@@ -64,7 +61,17 @@ public class Player implements Entity, DrawingObject{
         } 
         else if (version < 130){
             PunchFrame2(g2d);
+        }
+
+        else if (version <= 160){
+            drawFrame2(g2d);
+        }
+        else if (version <= 170){
+            KickFrame1(g2d);
         } 
+        else if (version < 200){
+            KickFrame2(g2d);
+        }
 
 
         version++;
@@ -96,6 +103,10 @@ public class Player implements Entity, DrawingObject{
 
         else if (code == KeyEvent.VK_Z){
             version=100;
+        }
+
+        else if (code == KeyEvent.VK_X){
+            version=160;
         }
     }
 
@@ -259,7 +270,6 @@ public class Player implements Entity, DrawingObject{
         g2d.rotate(Math.toRadians(43),678.44+x+56.36/2,435.03+y+26.28/2);
         l_right_leg.draw(g2d);
 
-        g2d.setTransform(originalTransform);
     }
 
     public void PunchFrame1(Graphics2D g2d){
@@ -348,7 +358,6 @@ public class Player implements Entity, DrawingObject{
         g2d.rotate(Math.toRadians(43),678.44+x+56.36/2,435.03+y+26.28/2);
         l_right_leg.draw(g2d);
 
-        g2d.setTransform(originalTransform);
     }
 
     public void PunchFrame2(Graphics2D g2d){
@@ -431,7 +440,173 @@ public class Player implements Entity, DrawingObject{
         g2d.rotate(Math.toRadians(43),678.44+x+56.36/2,435.03+y+26.28/2);
         l_right_leg.draw(g2d);
 
+    }
+
+    public void KickFrame1(Graphics2D g2d){
+        double x1=-21.25+x;
+        double y1=-31.18+y;
+        double move_x,move_y;
+        
+        Circle head = new Circle(630.69+x1, 233.78+y1, 45, 45);
+        Circle left_hand = new Circle(604.61+x1, 300.84+y1, 29, 29);
+        Circle right_hand = new Circle(602.39+x1, 280.21+y1, 29, 29);
+        Circle left_elbow= new Circle(639.23+x1, 316.44+y1, 29, 29);
+        Circle left_shoulder= new Circle(653.21+x1, 286.41+y1, 29, 29);
+
+        Circle upper_torso= new Circle(647.14+x1, 277.25+y1, 41.9, 41.9);
+        Circle mid_torso= new Circle(640.5+x1, 334+y1, 41.9, 118.4);
+        Circle lower_torso= new Circle(661.13+x1, 352.9+y1, 41.9, 41.9);
+
+        Circle left_knee= new Circle(606.59+x, 347.76+y, 29, 29);
+        Circle right_knee= new Circle(674.08+x, 402.56+y, 28, 28);
+        Circle left_foot= new Circle(606.39+x, 410.94+y, 29.5, 29.5);
+        Circle right_foot= new Circle(712.18+x, 453+y,29.5, 29.5);
+
+        Square l_left_arm= new Square(613.4+x1,313.48+y1,40.14,20.61);
+        Square u_left_arm= new Square(641.62+x1,303.8+y1,45.64,22.96);
+        Square right_arm= new Square(609.85+x1,302.33+y1,40,20);
+
+        Square u_left_leg= new Square(612.07+x,344.2+y,48.16,25.55);
+        Square l_left_leg= new Square(593.23+x,379.02+y,55.2,27.92);
+        Square u_right_leg= new Square(645.3+x,368.34+y,64.12,27.55);
+        Square l_right_leg= new Square(681.44+x,430.03+y,56.36,26.28);
+
+        RenderingHints rh = new
+        RenderingHints(RenderingHints.KEY_ANTIALIASING,
+        RenderingHints.VALUE_ANTIALIAS_ON);
+        g2d.setRenderingHints(rh);
+        head.draw(g2d);
+        left_hand.draw(g2d);
+        right_hand.draw(g2d);
+        left_elbow.draw(g2d);
+        left_shoulder.draw(g2d);
+
+        upper_torso.draw(g2d);
+        lower_torso.draw(g2d);
+
+        left_knee.draw(g2d);
+        right_knee.draw(g2d);
+        left_foot.draw(g2d);
+        right_foot.draw(g2d);
+
+        AffineTransform originalTransform = g2d.getTransform();
+
+        g2d.rotate(Math.toRadians(-10),347+x1,250+y1);  // Rotate 10 degrees
+
+        mid_torso.draw(g2d);
+
         g2d.setTransform(originalTransform);
+        g2d.rotate(Math.toRadians(26),(613.4+x1+40.14/2),(313.48+y1+20.61/2));
+        l_left_arm.draw(g2d);
+
+        g2d.setTransform(originalTransform);
+        g2d.rotate(Math.toRadians(-62.9),(641.62+x1+45.64/2),(303.8+y1+22.96/2));
+        u_left_arm.draw(g2d);
+
+        g2d.setTransform(originalTransform);
+        g2d.rotate(Math.toRadians(41),609.85+x1+40/2,302.33+y1+20/2);
+        right_arm.draw(g2d);
+
+        g2d.setTransform(originalTransform);
+        g2d.rotate(Math.toRadians(-19),612.07+x+48.16/2,344.2+y+25.55/2);
+        u_left_leg.draw(g2d);
+
+        g2d.setTransform(originalTransform);
+        g2d.rotate(Math.toRadians(90),593.23+x+55.2/2,379.02+y+27.92/2);
+        l_left_leg.draw(g2d);
+
+        g2d.setTransform(originalTransform);
+        g2d.rotate(Math.toRadians(72),645.3+x+64.12/2,368.34+y+27.55/2);
+        u_right_leg.draw(g2d);
+
+        g2d.setTransform(originalTransform);
+        g2d.rotate(Math.toRadians(52),681.44+x+56.36/2,430.03+y+26.28/2);
+        l_right_leg.draw(g2d);
+
+    }
+
+    public void KickFrame2(Graphics2D g2d){
+        double x1=-21.25+x;
+        double y1=-31.18+y;
+        double r=20;
+        double move_x,move_y;
+        
+        Circle head = new Circle(668.69+x1, 230.78+y1, 45, 45);
+        Circle left_hand = new Circle(622.61+x1, 300.84+y1, 29, 29);
+        Circle right_hand = new Circle(617.39+x1, 280.21+y1, 29, 29);
+        Circle left_elbow= new Circle(640.23+x1, 317.44+y1, 29, 29);
+        // Circle left_shoulder= new Circle(653.21+x1, 286.41+y1, 29, 29);
+
+        Circle upper_torso= new Circle(667.14+x1, 280.25+y1, 41, 41);
+        Circle mid_torso= new Circle(665.5+x1, 282+y1, 41.9, 118.4);
+        Circle lower_torso= new Circle(661.13+x1, 352.9+y1, 41, 41);
+
+        // Circle left_knee= new Circle(606.59+x, 347.76+y, 29, 29);
+        Circle right_knee= new Circle(669.08+x, 392.56+y, 28, 28);
+        Circle left_foot= new Circle(546.39+x, 300.94+y, 29.5, 29.5);
+        Circle right_foot= new Circle(688.18+x, 453+y,29.5, 29.5);
+
+        Square l_left_arm= new Square(623.4+x1,313.48+y1,40.14,20.61);
+        Square u_left_arm= new Square(651.62+x1,303.8+y1,45.64,22.96);
+        Square right_arm= new Square(619.85+x1,302.33+y1,40,20);
+
+        Square u_left_leg= new Square(552.07+x,320.2+y,124.12,25.55);
+        // Square l_left_leg= new Square(593.23+x,379.02+y,55.2,27.92);
+        Square u_right_leg= new Square(620.3+x,390.34+y,124.12,29.55);
+        // Square l_right_leg= new Square(676.44+x,420.03+y,56.36,26.28);
+
+        RenderingHints rh = new
+        RenderingHints(RenderingHints.KEY_ANTIALIASING,
+        RenderingHints.VALUE_ANTIALIAS_ON);
+        g2d.setRenderingHints(rh);
+        head.draw(g2d);
+        left_hand.draw(g2d);
+        right_hand.draw(g2d);
+        left_elbow.draw(g2d);
+        // left_shoulder.draw(g2d);
+
+        upper_torso.draw(g2d);
+        lower_torso.draw(g2d);
+
+        // left_knee.draw(g2d);
+        right_knee.draw(g2d);
+        left_foot.draw(g2d);
+        right_foot.draw(g2d);
+
+        AffineTransform originalTransform = g2d.getTransform();
+
+        g2d.rotate(Math.toRadians(-10+r-5),665.5+x1+41.9/2,282+y1+118.4/2);
+
+        mid_torso.draw(g2d);
+
+        g2d.setTransform(originalTransform);
+        g2d.rotate(Math.toRadians(26+r),(623.4+x1+40.14/2),(313.48+y1+20.61/2));
+        l_left_arm.draw(g2d);
+
+        g2d.setTransform(originalTransform);
+        g2d.rotate(Math.toRadians(-62.9+r),(651.62+x1+45.64/2),(303.8+y1+22.96/2));
+        u_left_arm.draw(g2d);
+
+        g2d.setTransform(originalTransform);
+        g2d.rotate(Math.toRadians(41+r),619.85+x1+40/2,302.33+y1+20/2);
+        right_arm.draw(g2d);
+
+        g2d.setTransform(originalTransform);
+        g2d.rotate(Math.toRadians(19),552.07+x+124.12/2,320.2+y+25.55/2);
+        u_left_leg.draw(g2d);
+
+        // g2d.setTransform(originalTransform);
+        // g2d.rotate(Math.toRadians(90),593.23+x+55.2/2,379.02+y+27.92/2);
+        // l_left_leg.draw(g2d);
+
+        g2d.setTransform(originalTransform);
+        g2d.rotate(Math.toRadians(72),620.3+x+124.12/2,390.34+y+29.55/2);
+        u_right_leg.draw(g2d);
+
+        // g2d.setTransform(originalTransform);
+        // g2d.rotate(Math.toRadians(52),676.44+x+56.36/2,420.03+y+26.28/2);
+        // l_right_leg.draw(g2d);
+
     }
 
     public int getVersion() {
