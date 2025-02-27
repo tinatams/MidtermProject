@@ -20,7 +20,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.geom.AffineTransform;
 
-public class Player {
+public class Player implements Entity, DrawingObject{
     private HealthBar health= new HealthBar(this, -785, 15);
     private String name;
 
@@ -81,7 +81,9 @@ public class Player {
         health.setCurrentHealth(health.getCurrentHealth()-amount); 
     }
 
-
+    public double getX(){
+        return x;
+    }
     public int getHeath(){
         return health.getCurrentHealth();
     }
@@ -269,6 +271,7 @@ public class Player {
         g2d.setTransform(originalTransform);
         g2d.rotate(Math.toRadians(43),678.44+x+56.36/2,435.03+y+26.28/2);
         l_right_leg.draw(g2d);
+        g2d.setTransform(originalTransform);
 
     }
 
@@ -357,6 +360,7 @@ public class Player {
         g2d.setTransform(originalTransform);
         g2d.rotate(Math.toRadians(43),678.44+x+56.36/2,435.03+y+26.28/2);
         l_right_leg.draw(g2d);
+        g2d.setTransform(originalTransform);
 
     }
 
@@ -440,6 +444,8 @@ public class Player {
         g2d.rotate(Math.toRadians(43),678.44+x+56.36/2,435.03+y+26.28/2);
         l_right_leg.draw(g2d);
 
+        g2d.setTransform(originalTransform);
+
     }
 
     public void KickFrame1(Graphics2D g2d){
@@ -522,6 +528,7 @@ public class Player {
         g2d.setTransform(originalTransform);
         g2d.rotate(Math.toRadians(52),681.44+x+56.36/2,430.03+y+26.28/2);
         l_right_leg.draw(g2d);
+        g2d.setTransform(originalTransform);
 
     }
 
@@ -602,6 +609,7 @@ public class Player {
         g2d.setTransform(originalTransform);
         g2d.rotate(Math.toRadians(72),620.3+x+124.12/2,390.34+y+29.55/2);
         u_right_leg.draw(g2d);
+        g2d.setTransform(originalTransform);
 
         // g2d.setTransform(originalTransform);
         // g2d.rotate(Math.toRadians(52),676.44+x+56.36/2,420.03+y+26.28/2);
