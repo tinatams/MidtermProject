@@ -51,7 +51,6 @@ public class Fire implements DrawingObject {
         if (x >= 350){
             drawable = false;
             attack = false;
-            System.out.print(x);
             x = originalx;
         }
     }

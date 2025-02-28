@@ -83,7 +83,6 @@ public class SceneCanvas extends JComponent {
                     npc.setVersion(61); 
                     if (ableAttack) Fireball.damage(user);
                     scheduleAttack = false;
-                    System.out.println("fireball");
                 }
             }
         };
