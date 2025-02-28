@@ -45,7 +45,7 @@ public class SceneCanvas extends JComponent {
         user.update(e);
         npc.update(e);
 
-        if(user.getX() < -300){
+        if(user.getX() < -270){
             ableAttack = true;
         }
         else{

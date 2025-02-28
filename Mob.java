@@ -13,6 +13,7 @@ public class Mob implements Entity, DrawingObject{
     private boolean drawable; 
     private boolean dead;
     private HealthBar health= new HealthBar(this, 15, 15);
+    Fire fireBall;
 
     public Mob(int x, int y, double scale) {
         this.x = x;
@@ -23,6 +24,7 @@ public class Mob implements Entity, DrawingObject{
 
         drawable = true;
         dead = false;
+        fireBall = new Fire(0.3,-10,240);
     }
 
     public void takeDamage(int amount){
@@ -61,6 +63,8 @@ public class Mob implements Entity, DrawingObject{
 
         if (version == 60 || version == 180){
             version = 1;
+            fireBall.setDrawable(false);
+            fireBall.setX(-120);
         } 
         
         if (version <= 30){
@@ -71,8 +75,11 @@ public class Mob implements Entity, DrawingObject{
         
         else if (version < 90){
             drawFrame1(g2d);
+            fireBall.setDrawable(true);
         } else if (version < 120){
             drawFrame2(g2d);
+            fireBall.draw(g2d);
+            fireBall.moveX();
         } else if (version < 150){
             drawFrame3(g2d);
         } else if (version < 180){

@@ -23,7 +23,6 @@ public class SceneFrame extends JPanel{
         while(true){
             sc.repaint();
             Thread.sleep(9);
-
         }
 
     }
