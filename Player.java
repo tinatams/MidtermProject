@@ -38,7 +38,6 @@ public class Player implements Entity, DrawingObject{
         this.y = y;
         version = 1;
         speed = 20;
-
     }
 
 
