@@ -3,15 +3,17 @@ import java.awt.*;
 import java.awt.geom.*;
 
 public class Fire implements DrawingObject {
-    private int x, y;
+    private int x, y, originalx;
     private double scale;
-    private boolean drawable;
+    private boolean drawable, attack;
 
     public Fire(double scale, int x, int y) {
         this.scale = scale;
         this.x = x;
         this.y = y;
-        drawable = true;
+        originalx = x;
+        drawable = false;
+        attack = false;
     }
 
     public void draw(Graphics2D g2d){
@@ -30,21 +32,35 @@ public class Fire implements DrawingObject {
 
             g2d.setTransform(reset);
         }
+
+        if (attack){
+            update();
+        }
     }
 
     public void setDrawable(boolean d){
         drawable = d;
     }
 
+    public void setAttacking(boolean a){
+        attack = a;
+    }
+
     public void moveX(){
-        x -= 5;
-        if (x <= -300){
+        x += 5;
+        if (x >= 350){
             drawable = false;
+            attack = false;
             System.out.print(x);
+            x = originalx;
         }
     }
 
     public void setX(int x){
         this.x = x;
+    }
+
+    public void update(){
+        moveX();
     }
 }

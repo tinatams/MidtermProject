@@ -6,12 +6,15 @@ import java.util.Timer;
 import javax.swing.*;
 
 public class SceneCanvas extends JComponent {
+    // put this so that it initializes inside of constructor;
     Player user= new Player(0,-50);
     Mob npc = new Mob(40,270, 0.5);
     HealthBar npcHealth = npc.getHealthBar();
     HealthBar userHealth = user.getHealthBar();
     boolean ableAttack = false;
     boolean scheduleAttack = false;
+
+    Fire fireBall = new Fire(0.3,150,346);
 
     Random rand = new Random();
     
@@ -33,7 +36,8 @@ public class SceneCanvas extends JComponent {
         npcHealth.draw(g2d);
 
         if (npc.getDrawable()){
-            npc.draw(g2d);  
+            npc.draw(g2d);
+            fireBall.draw(g2d);  
         } 
 
         if (!scheduleAttack && (npc.dead()!= true)){
@@ -75,7 +79,8 @@ public class SceneCanvas extends JComponent {
             @Override 
             public void run(){
                 if (npc.dead() != true){
-                    npc.setVersion(61);
+                    fireBall.setAttacking(true);
+                    npc.setVersion(61); 
                     if (ableAttack) Fireball.damage(user);
                     scheduleAttack = false;
                     System.out.println("fireball");
@@ -86,6 +91,19 @@ public class SceneCanvas extends JComponent {
         int randomInterval = (rand.nextInt(10-3) + 3)*1000;
         timer.schedule(task, randomInterval );
         scheduleAttack = true;
+
+        Timer timer2 = new Timer();
+        TimerTask task2 = new TimerTask(){
+            @Override 
+            public void run(){
+                if (npc.dead() != true){
+                    fireBall.setDrawable(true);
+                }
+            }
+        };
+
+        timer2.schedule(task2, (randomInterval - 1000));
+
     }
 
 }
