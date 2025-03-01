@@ -15,8 +15,13 @@ public class SceneCanvas extends JComponent {
     boolean scheduleAttack = false;
 
     Fire fireBall = new Fire(0.3,150,346);
+    Fire userBall = new Fire(0.3,-585,240);
 
     Random rand = new Random();
+
+    public SceneCanvas(){
+        user.setFireBall(userBall);
+    }
     
 
     @Override
@@ -25,11 +30,12 @@ public class SceneCanvas extends JComponent {
 
         RenderingHints rh = new RenderingHints( RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setRenderingHints(rh); //makes the rendering smoother
-
+        
         user.draw(g2d);
         
         AffineTransform reset = g2d.getTransform();
         g2d.scale(-1, 1);
+        userBall.draw2(g2d);
         userHealth.draw(g2d);
         g2d.setTransform(reset);
 
@@ -64,6 +70,7 @@ public class SceneCanvas extends JComponent {
             npc.takeDamage(10);
         } else if (code == KeyEvent.VK_C && ableAttack){
             npc.takeDamage(30);
+            userBall = new Fire(0.3,-585,240);
         }
 
         if (npc.getHealth() <= 0){

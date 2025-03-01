@@ -28,6 +28,7 @@ public class Player implements Entity, DrawingObject{
     private int y;
     private int version;
     private int speed;
+    private Fire fireBall;
 
     public void setSpeed(int speed) {
         this.speed = speed;
@@ -40,6 +41,9 @@ public class Player implements Entity, DrawingObject{
         speed = 20;
     }
 
+    public void setFireBall(Fire fb){
+        fireBall = fb;
+    }
 
     public void draw(Graphics2D g2d){
         if (version == 60 || version ==130 || version==200){
@@ -96,14 +100,23 @@ public class Player implements Entity, DrawingObject{
 
         if (code == KeyEvent.VK_D){
             move(speed);
+            fireBall.setStartFireX(fireBall.getOrigX() - speed);
         }
 
         else if (code == KeyEvent.VK_A){
             move(-speed);
+            fireBall.setStartFireX(fireBall.getOrigX() + speed);
         }
 
         else if (code == KeyEvent.VK_Z){
             version=100;
+        } 
+
+        else if (code == KeyEvent.VK_C){
+            version=100;
+            fireBall.setAttacking(true);
+            fireBall.setDrawable(true); 
+            
         }
 
         else if (code == KeyEvent.VK_X){
