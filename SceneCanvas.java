@@ -59,11 +59,11 @@ public class SceneCanvas extends JComponent {
         int code = e.getKeyCode();
 
         if (code == KeyEvent.VK_Z && ableAttack){
-            Kick.damage(npc);
+            npc.takeDamage(15);
         } else if (code == KeyEvent.VK_X && ableAttack){
-            Punch.damage(npc);
+            npc.takeDamage(10);
         } else if (code == KeyEvent.VK_C && ableAttack){
-            Fireball.damage(npc);
+            npc.takeDamage(30);
         }
 
         if (npc.getHealth() <= 0){
@@ -81,13 +81,13 @@ public class SceneCanvas extends JComponent {
                 if (npc.dead() != true){
                     fireBall.setAttacking(true);
                     npc.setVersion(61); 
-                    if (ableAttack) Fireball.damage(user);
+                    if (ableAttack) user.takeDamage(30);
                     scheduleAttack = false;
                 }
             }
         };
 
-        int randomInterval = (rand.nextInt(10-3) + 3)*1000;
+        int randomInterval = (rand.nextInt(10-3) + 3) * 1000;
         timer.schedule(task, randomInterval );
         scheduleAttack = true;
 

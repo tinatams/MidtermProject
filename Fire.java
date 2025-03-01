@@ -47,7 +47,7 @@ public class Fire implements DrawingObject {
     }
 
     public void moveX(){
-        x += 5;
+        x += 7;
         if (x >= 350){
             drawable = false;
             attack = false;
