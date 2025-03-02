@@ -60,31 +60,29 @@ public class SceneCanvas extends JComponent {
                     object.draw(g2d);
                 }
         } else {
+            user.draw(g2d);
+            if (npc.getDrawable()){
+                npc.draw(g2d);
+                fireBall.draw(g2d);  
+            }
 
+            g2d.scale(-1, 1);
+            userHealth.draw(g2d);
+            g2d.setTransform(reset);
 
-        user.draw(g2d);
-        if (npc.getDrawable()){
-            npc.draw(g2d);
-            fireBall.draw(g2d);  
-        }
+            npcHealth.draw(g2d);
 
-        g2d.scale(-1, 1);
-        userHealth.draw(g2d);
-        g2d.setTransform(reset);
+            if (!scheduleAttack && (npc.dead()!= true)){
+                scheduleAttack();
+            }
 
-        npcHealth.draw(g2d);
+            if (user.getHealth() <= 0){
+                user.setDrawable(false);
+            }
 
-        if (!scheduleAttack && (npc.dead()!= true)){
-            scheduleAttack();
-        }
-
-        if (user.getHealth() <= 0){
-            user.setDrawable(false);
-        }
-
-        if (npc.getDrawable() == false || user.getDrawable() == false){
-            gameOver = true;
-        }
+            if (npc.getDrawable() == false || user.getDrawable() == false){
+                gameOver = true;
+            }
         }
     }
 
