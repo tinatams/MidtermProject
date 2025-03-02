@@ -13,7 +13,7 @@ public class Mob implements Entity, DrawingObject{
     private boolean drawable; 
     private boolean dead;
     private HealthBar health= new HealthBar(this, 15, 15);
-    Fire fireBall;
+    private Fire fireBall;
 
     public Mob(int x, int y, double scale) {
         this.x = x;
@@ -60,40 +60,41 @@ public class Mob implements Entity, DrawingObject{
 
         g2d.scale(-1, 1);
         g2d.translate(-68, 60);
+        if (drawable){
+            if (version == 60 || version == 180){
+                version = 1;
+            } 
+            
+            if (version <= 30){
+                drawFrame3(g2d);
+            } else if (version < 60){
+                drawFrame1(g2d);
+            } 
+            
+            else if (version < 90){
+                drawFrame1(g2d);
+            } else if (version < 120){
+                drawFrame2(g2d);
+            } else if (version < 150){
+                drawFrame3(g2d);
+            } else if (version < 180){
+                drawFrame1(g2d);
+            } 
+            
+            else if (version < 210){
+                drawDyingFrame1(g2d);
+                dead = true;
+            } else if (version < 230){
+                drawDyingFrame2(g2d);
+            } else if (version < 250){
+                drawDyingFrame3(g2d);
+            } else if (version > 250){
+                drawable = false;
+            }
 
-        if (version == 60 || version == 180){
-            version = 1;
-        } 
-        
-        if (version <= 30){
-            drawFrame3(g2d);
-        } else if (version < 60){
-            drawFrame1(g2d);
-        } 
-        
-        else if (version < 90){
-            drawFrame1(g2d);
-        } else if (version < 120){
-            drawFrame2(g2d);
-        } else if (version < 150){
-            drawFrame3(g2d);
-        } else if (version < 180){
-            drawFrame1(g2d);
-        } 
-        
-        else if (version < 210){
-            drawDyingFrame1(g2d);
-            dead = true;
-        } else if (version < 230){
-            drawDyingFrame2(g2d);
-        } else if (version < 250){
-            drawDyingFrame3(g2d);
-        } else if (version > 250){
-            drawable = false;
+            version++;
         }
-
-        version++;
-
+        
         g2d.setTransform(reset);
     }
 

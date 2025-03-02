@@ -7,49 +7,90 @@ import javax.swing.*;
 
 public class SceneCanvas extends JComponent {
     // put this so that it initializes inside of constructor;
-    Player user= new Player(0,-10);
-    Mob npc = new Mob(40,325, 0.5);
-    Background cave=new Background();
-    HealthBar npcHealth = npc.getHealthBar();
-    HealthBar userHealth = user.getHealthBar();
-    boolean ableAttack = false;
-    boolean scheduleAttack = false;
+    Background cave;
+    private ArrayList<DrawingObject> assests;
+    private ArrayList<DrawingObject> endScreen;
 
-    Fire fireBall = new Fire(0.3,150,346);
-    Fire userBall = new Fire(0.3,-585,240);
+    private Player user;
+    private Mob npc; 
+    private HealthBar npcHealth;
+    private HealthBar userHealth ;
+    private Fire fireBall;
 
-    Random rand = new Random();
+    private boolean ableAttack;
+    private boolean scheduleAttack;
+    public boolean gameOver;
 
-    public SceneCanvas(){
-        user.setFireBall(userBall);
-    }
+    private Random rand = new Random();
     
 
+    public SceneCanvas(){
+        assests = new ArrayList<DrawingObject>();
+        endScreen = new ArrayList<DrawingObject>();
+        setUpEndScreen();
+
+        cave = new Background();
+
+        user= new Player(0,-10);
+        npc = new Mob(40, 325, 0.5); 
+        npcHealth = npc.getHealthBar();
+        userHealth = user.getHealthBar();
+        fireBall = new Fire(0.3, 150, 400);
+
+        ableAttack = false;
+        scheduleAttack = false; 
+        gameOver = false;
+
+    }
+
+    public void setUpEndScreen(){
+        endScreen.add(new LetterE(172.1, 55, 1, Color.BLACK));
+        endScreen.add(new LetterD(504.9, 55, 1, Color.BLACK));
+        endScreen.add(new LetterN(325.3, 55, 1, Color.BLACK));
+        endScreen.add(new PlayButton(310, 281, 1, Color.black, Color.white));
+    }
+    
     @Override
     protected void paintComponent(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
 
         RenderingHints rh = new RenderingHints( RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setRenderingHints(rh); //makes the rendering smoother
-
-        cave.draw(g2d);
-        user.draw(g2d);
-        
         AffineTransform reset = g2d.getTransform();
-        g2d.scale(-1, 1);
-        userBall.draw2(g2d);
-        userHealth.draw(g2d);
-        g2d.setTransform(reset);
+        
+        if (gameOver){
+            cave.draw(g2d);
+            Rectangle2D.Double over = new Rectangle2D.Double(0, 0, 800, 600);
+            g2d.setColor(new Color(94, 76, 74, 75));
+            g2d.fill(over);
+            for (DrawingObject object : endScreen){
+                    object.draw(g2d);
+                }
+        } else {
+            cave.draw(g2d);
+            user.draw(g2d);
+            if (npc.getDrawable()){
+                npc.draw(g2d);
+                fireBall.draw(g2d);  
+            }
 
-        npcHealth.draw(g2d);
+            g2d.scale(-1, 1);
+            userHealth.draw(g2d);
+            g2d.setTransform(reset);
 
-        if (npc.getDrawable()){
-            npc.draw(g2d);
-            fireBall.draw(g2d);  
-        } 
+            npcHealth.draw(g2d);
 
-        if (!scheduleAttack && (npc.dead()!= true)){
-            scheduleAttack();
+            if (!scheduleAttack && (npc.dead()!= true)){
+                scheduleAttack();
+            }
+
+            if (user.getHealth() <= 0){
+                user.setDrawable(false);
+            }
+
+            if (npc.getDrawable() == false || user.getDrawable() == false){
+                gameOver = true;
+            }
         }
     }
 
@@ -57,7 +98,7 @@ public class SceneCanvas extends JComponent {
         user.update(e);
         npc.update(e);
 
-        if(user.getX() < -270){
+        if (user.getX() < -270){
             ableAttack = true;
         }
         else{
@@ -70,16 +111,12 @@ public class SceneCanvas extends JComponent {
             npc.takeDamage(15);
         } else if (code == KeyEvent.VK_X && ableAttack){
             npc.takeDamage(10);
-        } else if (code == KeyEvent.VK_C && ableAttack){
-            npc.takeDamage(30);
-            userBall = new Fire(0.3,-585,240);
-        }
+        } 
 
         if (npc.getHealth() <= 0){
             npc.setVersion(181);
             npc.dead();
-        }
-
+        } 
     }
 
     public void scheduleAttack(){
@@ -111,7 +148,6 @@ public class SceneCanvas extends JComponent {
         };
 
         timer2.schedule(task2, (randomInterval - 1000));
-
     }
 
 }

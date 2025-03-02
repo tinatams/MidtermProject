@@ -247,11 +247,6 @@ public class Background{
     g2d.setTransform(originalTransform);
 
     g2d.translate(350, 50);
-
-   
-    
-    
-
     
     }
 }
