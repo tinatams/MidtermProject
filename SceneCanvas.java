@@ -6,21 +6,44 @@ import java.util.Timer;
 import javax.swing.*;
 
 public class SceneCanvas extends JComponent {
-    // put this so that it initializes inside of constructor;
-    Player user= new Player(0,-50);
-    Mob npc = new Mob(40,270, 0.5);
-    HealthBar npcHealth = npc.getHealthBar();
-    HealthBar userHealth = user.getHealthBar();
-    boolean ableAttack = false;
-    boolean scheduleAttack = false;
+    private ArrayList<DrawingObject> assests;
+    private ArrayList<DrawingObject> endScreen;
 
-    Fire fireBall = new Fire(0.3,150,346);
-    Fire userBall = new Fire(0.3,-585,240);
+    private Player user;
+    private Mob npc; 
+    private HealthBar npcHealth;
+    private HealthBar userHealth ;
+    private Fire fireBall;
 
-    Random rand = new Random();
+    private boolean ableAttack;
+    private boolean scheduleAttack;
+    public boolean gameOver;
+
+    private Random rand = new Random();
+    
 
     public SceneCanvas(){
-        user.setFireBall(userBall);
+        assests = new ArrayList<DrawingObject>();
+        endScreen = new ArrayList<DrawingObject>();
+        setUpEndScreen();
+
+        user= new Player(0,-50);
+        npc = new Mob(40,270, 0.5); 
+        npcHealth = npc.getHealthBar();
+        userHealth = user.getHealthBar();
+        fireBall = new Fire(0.3,150,346);
+
+        ableAttack = false;
+        scheduleAttack = false; 
+        gameOver = false;
+
+    }
+
+    public void setUpEndScreen(){
+        endScreen.add(new LetterE(172.1, 55, 1, Color.BLACK));
+        endScreen.add(new LetterD(504.9, 55, 1, Color.BLACK));
+        endScreen.add(new LetterN(325.3, 55, 1, Color.BLACK));
+        endScreen.add(new PlayButton(310, 281, 1, Color.black, Color.white));
     }
     
 
@@ -30,24 +53,38 @@ public class SceneCanvas extends JComponent {
 
         RenderingHints rh = new RenderingHints( RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setRenderingHints(rh); //makes the rendering smoother
-        
-        user.draw(g2d);
-        
         AffineTransform reset = g2d.getTransform();
+        
+        if (gameOver){
+            for (DrawingObject object : endScreen){
+                    object.draw(g2d);
+                }
+        } else {
+
+
+        user.draw(g2d);
+        if (npc.getDrawable()){
+            npc.draw(g2d);
+            fireBall.draw(g2d);  
+        }
+
         g2d.scale(-1, 1);
-        userBall.draw2(g2d);
         userHealth.draw(g2d);
         g2d.setTransform(reset);
 
         npcHealth.draw(g2d);
 
-        if (npc.getDrawable()){
-            npc.draw(g2d);
-            fireBall.draw(g2d);  
-        } 
-
         if (!scheduleAttack && (npc.dead()!= true)){
             scheduleAttack();
+        }
+
+        if (user.getHealth() <= 0){
+            user.setDrawable(false);
+        }
+
+        if (npc.getDrawable() == false || user.getDrawable() == false){
+            gameOver = true;
+        }
         }
     }
 
@@ -55,7 +92,7 @@ public class SceneCanvas extends JComponent {
         user.update(e);
         npc.update(e);
 
-        if(user.getX() < -270){
+        if (user.getX() < -270){
             ableAttack = true;
         }
         else{
@@ -68,16 +105,12 @@ public class SceneCanvas extends JComponent {
             npc.takeDamage(15);
         } else if (code == KeyEvent.VK_X && ableAttack){
             npc.takeDamage(10);
-        } else if (code == KeyEvent.VK_C && ableAttack){
-            npc.takeDamage(30);
-            userBall = new Fire(0.3,-585,240);
-        }
+        } 
 
         if (npc.getHealth() <= 0){
             npc.setVersion(181);
             npc.dead();
-        }
-
+        } 
     }
 
     public void scheduleAttack(){
@@ -94,7 +127,7 @@ public class SceneCanvas extends JComponent {
             }
         };
 
-        int randomInterval = (rand.nextInt(10-3) + 3) * 1000;
+        int randomInterval = (rand.nextInt(6-3) + 3) * 1000;
         timer.schedule(task, randomInterval );
         scheduleAttack = true;
 

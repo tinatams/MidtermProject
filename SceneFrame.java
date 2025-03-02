@@ -6,6 +6,7 @@ public class SceneFrame extends JPanel{
     private JFrame frame= new JFrame();
     private SceneCanvas sc=new SceneCanvas();
     private Container c=frame.getContentPane();
+    private EndScreen end = new EndScreen(800, 600);
 
     public SceneFrame(){
 
@@ -13,7 +14,7 @@ public class SceneFrame extends JPanel{
     
     public void setUpGUI() throws InterruptedException {
         frame.setSize(800, 600);
-        frame.setTitle("Drawing in Java");
+        frame.setTitle("Midterm Project - Llamas - Uy");
         frame.add(sc);
         frame.addKeyListener(new AL());
 

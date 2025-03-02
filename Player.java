@@ -28,7 +28,8 @@ public class Player implements Entity, DrawingObject{
     private int y;
     private int version;
     private int speed;
-    private Fire fireBall;
+
+    private boolean drawable;
 
     public void setSpeed(int speed) {
         this.speed = speed;
@@ -39,45 +40,43 @@ public class Player implements Entity, DrawingObject{
         this.y = y;
         version = 1;
         speed = 20;
-    }
-
-    public void setFireBall(Fire fb){
-        fireBall = fb;
+        drawable = true;
     }
 
     public void draw(Graphics2D g2d){
-        if (version == 60 || version ==130 || version==200){
-            version = 1;
-        }
-        if (version <= 30){
-            drawFrame1(g2d);
-        }
-        else if (version < 60){
-            drawFrame2(g2d);
-        } 
+        if (drawable){
+            if (version == 60 || version ==130 || version==200){
+                version = 1;
+            }
+            if (version <= 30){
+                drawFrame1(g2d);
+            }
+            else if (version < 60){
+                drawFrame2(g2d);
+            } 
 
-        else if (version <= 100){
-            drawFrame2(g2d);
-        }
-        else if (version <= 110){
-            PunchFrame1(g2d);
-        } 
-        else if (version < 130){
-            PunchFrame2(g2d);
-        }
+            else if (version <= 100){
+                drawFrame2(g2d);
+            }
+            else if (version <= 110){
+                PunchFrame1(g2d);
+            } 
+            else if (version < 130){
+                PunchFrame2(g2d);
+            }
 
-        else if (version <= 160){
-            drawFrame2(g2d);
-        }
-        else if (version <= 170){
-            KickFrame1(g2d);
-        } 
-        else if (version < 200){
-            KickFrame2(g2d);
-        }
+            else if (version <= 160){
+                drawFrame2(g2d);
+            }
+            else if (version <= 170){
+                KickFrame1(g2d);
+            } 
+            else if (version < 200){
+                KickFrame2(g2d);
+            }
 
-
-        version++;
+            version++;
+        }
         
     }
     public void takeDamage(int amount){
@@ -87,7 +86,8 @@ public class Player implements Entity, DrawingObject{
     public double getX(){
         return x;
     }
-    public int getHeath(){
+
+    public int getHealth(){
         return health.getCurrentHealth();
     }
 
@@ -100,24 +100,15 @@ public class Player implements Entity, DrawingObject{
 
         if (code == KeyEvent.VK_D){
             move(speed);
-            fireBall.setStartFireX(fireBall.getOrigX() - speed);
         }
 
         else if (code == KeyEvent.VK_A){
             move(-speed);
-            fireBall.setStartFireX(fireBall.getOrigX() + speed);
         }
 
         else if (code == KeyEvent.VK_Z){
             version=100;
         } 
-
-        else if (code == KeyEvent.VK_C){
-            version=100;
-            fireBall.setAttacking(true);
-            fireBall.setDrawable(true); 
-            
-        }
 
         else if (code == KeyEvent.VK_X){
             version=160;
@@ -635,6 +626,14 @@ public class Player implements Entity, DrawingObject{
 
     public void setVersion(int version) {
         this.version = version;
+    }
+
+    public boolean getDrawable() {
+        return drawable;
+    }
+
+    public void setDrawable(boolean drawable) {
+        this.drawable = drawable;
     }
 }
 

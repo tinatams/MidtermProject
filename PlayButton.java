@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 
-public class PlayButton{
+public class PlayButton implements DrawingObject{
     private double x, y, scale, rotation;
     private Color baseColor, playColor;
 
