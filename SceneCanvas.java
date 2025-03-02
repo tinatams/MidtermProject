@@ -7,8 +7,9 @@ import javax.swing.*;
 
 public class SceneCanvas extends JComponent {
     // put this so that it initializes inside of constructor;
-    Player user= new Player(0,-50);
-    Mob npc = new Mob(40,270, 0.5);
+    Player user= new Player(0,-10);
+    Mob npc = new Mob(40,325, 0.5);
+    Background cave=new Background();
     HealthBar npcHealth = npc.getHealthBar();
     HealthBar userHealth = user.getHealthBar();
     boolean ableAttack = false;
@@ -30,7 +31,8 @@ public class SceneCanvas extends JComponent {
 
         RenderingHints rh = new RenderingHints( RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setRenderingHints(rh); //makes the rendering smoother
-        
+
+        cave.draw(g2d);
         user.draw(g2d);
         
         AffineTransform reset = g2d.getTransform();

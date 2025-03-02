@@ -27,4 +27,10 @@ public class Square implements DrawingObject{
         g2d.fill(square);
     }
 
+    public void draw(Graphics2D g2d, Color color) {
+        Rectangle2D.Double square = new Rectangle.Double(x, y, w, h);
+        g2d.setColor(color);
+        g2d.fill(square);
+    }
+
 }

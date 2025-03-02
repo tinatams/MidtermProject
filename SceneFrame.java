@@ -14,6 +14,7 @@ public class SceneFrame extends JPanel{
     public void setUpGUI() throws InterruptedException {
         frame.setSize(800, 600);
         frame.setTitle("Drawing in Java");
+        c.setBackground(new Color(115, 39, 71));
         frame.add(sc);
         frame.addKeyListener(new AL());
 
