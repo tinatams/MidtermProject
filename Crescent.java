@@ -23,23 +23,17 @@ import java.awt.*;
 import java.awt.geom.*;
 
 public class Crescent implements DrawingObject {
-    private double x, y;
+    public double x, y;
+    public Color color;
 
-    public Crescent(double x, double y) {
+    public Crescent(double x, double y,Color color) {
         this.x = x;
         this.y = y;
+        this.color=color;
     }
 
     @Override
     public void draw(Graphics2D g2d) {
-        Path2D.Double crv = new
-        Path2D.Double();
-        crv.moveTo(x,y);
-        crv.curveTo(x-100,y-100 ,x+100,y-100,x+200,y);
-
-    }
-
-    public void draw(Graphics2D g2d, Color color) {
         Path2D.Double crv = new
         Path2D.Double();
         crv.moveTo(x,y);
@@ -58,3 +52,4 @@ public class Crescent implements DrawingObject {
 
 
 }
+
