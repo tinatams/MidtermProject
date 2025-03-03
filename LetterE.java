@@ -35,15 +35,15 @@ public class LetterE implements DrawingObject{
         AffineTransform reset = g2d.getTransform();
         g2d.translate(x, y);
 
-        Square vertBlock = new Square(0,0, 23, 180, color);
-        Square horizBlock = new Square(0, 0, 105.4, 23, color);
-        Square horizBlock2 = new Square(0, 70, 78.5, 23, color);
-        Square horizBlock3 = new Square(0, 157, 105.4, 23, color);
-
-        vertBlock.draw(g2d);
-        horizBlock.draw(g2d);
-        horizBlock2.draw(g2d);
-        horizBlock3.draw(g2d);
+        Rectangle2D.Double vertBlock = new Rectangle2D.Double(0,0, 23, 180);
+        Rectangle2D.Double horizBlock = new Rectangle2D.Double(0, 0, 105.4, 23);
+        Rectangle2D.Double horizBlock2 = new Rectangle2D.Double(0, 70, 78.5, 23);
+        Rectangle2D.Double horizBlock3 = new Rectangle2D.Double(0, 157, 105.4, 23);
+        g2d.setColor(color);
+        g2d.fill(vertBlock);
+        g2d.fill(horizBlock);
+        g2d.fill(horizBlock2);
+        g2d.fill(horizBlock3);
 
         g2d.setTransform(reset);
     }
