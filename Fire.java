@@ -68,10 +68,9 @@ public class Fire implements DrawingObject {
             AffineTransform reset = g2d.getTransform();
             g2d.translate(x, y);
             g2d.scale(scale, scale);
-
-            Circle basicCircle = new Circle(-80, -90, 180, 180, new Color(255, 87, 87));
-            Circle middleCircle = new Circle(-67, -69, 153, 153, new Color(255, 145, 77));
-            Circle highlCircle = new Circle(-55, -50, 130, 130, new Color(255, 189, 89));
+	    Circle basicCircle = new Circle(-80, -90, 180,new Color(255, 87, 87));
+	    Circle middleCircle = new Circle(-67, -69, 153, new Color(255, 145, 77));
+	    Circle highlCircle = new Circle(-55, -50, 130, new Color(255, 189, 89));
 
             basicCircle.draw(g2d);
             middleCircle.draw(g2d);
