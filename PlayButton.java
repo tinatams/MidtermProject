@@ -36,7 +36,7 @@ public class PlayButton implements DrawingObject{
         AffineTransform reset = g2d.getTransform();
         g2d.translate(x, y);
 
-        Circle base = new Circle(0 ,0, 180, 180, baseColor);
+        Circle base = new Circle(0 ,0, 180, baseColor);
         Triangle tri = new Triangle(80, 130, 60, 60, playColor);
         tri.setRot(90+90+45);
 
