@@ -24,10 +24,10 @@ import java.util.TimerTask;
 import javax.swing.*;
 
 public class SceneFrame{
-    public JFrame frame;
+    private JFrame frame;
     private SceneCanvas sc;
     private Container c;
-    public JLabel label;
+    private JLabel label;
 
     public SceneFrame(){
         frame = new JFrame();
@@ -67,7 +67,7 @@ public class SceneFrame{
     public class ML extends MouseAdapter{
         @Override
         public void mouseClicked(MouseEvent e) {
-            if (sc.timeToRest){
+            if (sc.getTimeToReset()){
                 frame.remove(sc);
                 sc = new SceneCanvas();
                 frame.add(sc);
@@ -84,7 +84,7 @@ public class SceneFrame{
         TimerTask task = new TimerTask(){
             @Override
             public void run() {
-                if (!sc.timeToRest){
+                if (!sc.getTimeToReset()){
                     sc.repaint();
                 } else {
                     timer.cancel();

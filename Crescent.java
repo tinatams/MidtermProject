@@ -21,7 +21,7 @@ import java.awt.*;
 import java.awt.geom.*;
 
 public class Crescent implements DrawingObject {
-    public double x, y;
+    private double x, y;
 
     public Crescent(double x, double y) {
         this.x = x;

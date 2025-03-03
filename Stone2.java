@@ -21,10 +21,10 @@ import java.awt.*;
 import java.awt.geom.*;
 
 public class Stone2 implements DrawingObject{
-    public double x, y;
-    public Color beige= new Color(232, 191, 162);
-    public Color orange= new Color(200, 96, 78);
-    public Color wine_red= new Color(115, 39, 71);
+    private double x, y;
+    private Color beige= new Color(232, 191, 162);
+    private Color orange= new Color(200, 96, 78);
+    private Color wine_red= new Color(115, 39, 71);
 
     public Stone2(double x, double y) {
         this.x = x;

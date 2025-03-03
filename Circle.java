@@ -21,8 +21,8 @@ import java.awt.*;
 import java.awt.geom.*;
 
 public class Circle implements DrawingObject {
-    public double x, y, w, h;
-    public Color color = Color.black;
+    private double x, y, w, h;
+    private Color color = Color.black;
 
     public Circle(double x, double y, double w, double h) {
         this.x = x;

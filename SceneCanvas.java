@@ -38,7 +38,7 @@ public class SceneCanvas extends JComponent {
 
     private boolean ableAttack;
     private boolean scheduleAttack;
-    public boolean gameOver, timeToRest;
+    private boolean gameOver, timeToReset;
 
     private Random rand = new Random();
     
@@ -58,7 +58,7 @@ public class SceneCanvas extends JComponent {
         ableAttack = false;
         scheduleAttack = false; 
         gameOver = false;
-        timeToRest = false;
+        timeToReset = false;
 
     }
 
@@ -85,7 +85,7 @@ public class SceneCanvas extends JComponent {
             for (DrawingObject object : endScreen){
                 object.draw(g2d);
             }
-            timeToRest = true;
+            timeToReset = true;
         } else {
             cave.draw(g2d);
             user.draw(g2d);
@@ -168,6 +168,10 @@ public class SceneCanvas extends JComponent {
         };
 
         timer2.schedule(task2, (randomInterval - 1000));
+    }
+
+    public boolean getTimeToReset() {
+        return timeToReset;
     }
 
 }

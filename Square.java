@@ -21,8 +21,8 @@ import java.awt.*;
 import java.awt.geom.*;
 
 public class Square implements DrawingObject{
-    public double x, y, w, h;
-    public Color color = Color.BLACK;
+    private double x, y, w, h;
+    private Color color = Color.BLACK;
 
     public Square(double x, double y, double w, double h) {
         this.x = x;
