@@ -39,6 +39,7 @@ public class SceneCanvas extends JComponent {
     private boolean ableAttack;
     private boolean scheduleAttack;
     private boolean gameOver, timeToReset;
+    private ArrayList<DrawingObject> background_highlights;
 
     private Random rand = new Random();
     
@@ -60,6 +61,13 @@ public class SceneCanvas extends JComponent {
         gameOver = false;
         timeToReset = false;
 
+	background_highlights= new ArrayList<DrawingObject>();
+        background_highlights.add(new Crescent(200,130,new Color(252, 174, 25)));
+        background_highlights.add(new Crescent(240,190,new Color(252, 174, 25)));
+        background_highlights.add(new Crescent(200,240,new Color(252, 174, 25)));
+        background_highlights.add(new Crescent(240,300,new Color(252, 174, 25)));
+        background_highlights.add(new Crescent(200,360,new Color(252, 174, 25)));
+
     }
 
     public void setUpEndScreen(){
@@ -79,6 +87,12 @@ public class SceneCanvas extends JComponent {
         
         if (gameOver){
             cave.draw(g2d);
+	    for(int i=0;i<4;i++){
+	            background_highlights.get(i).draw(g2d);
+	            g2d.translate(500, 25);
+	            background_highlights.get(i).draw(g2d);
+	            g2d.translate(-500, -25);
+            }
             Rectangle2D.Double over = new Rectangle2D.Double(0, 0, 800, 600);
             g2d.setColor(new Color(94, 76, 74, 128));
             g2d.fill(over);
