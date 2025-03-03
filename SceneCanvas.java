@@ -53,7 +53,7 @@ public class SceneCanvas extends JComponent {
         npc = new Mob(40, 325, 0.5); 
         npcHealth = npc.getHealthBar();
         userHealth = user.getHealthBar();
-        fireBall = new Fire(0.3, 150, 400);
+        fireBall = new Fire(150, 400, 0.3);
 
         ableAttack = false;
         scheduleAttack = false; 

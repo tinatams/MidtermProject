@@ -1,5 +1,6 @@
 /**
-    Health Bar Class
+    Line class that implements DrawingObject interphase. Line uses Graphics 2D object from java.awt package
+    to draw a line in a certain color and thickness. 
  
 	@author Martina Amale M. Llamas (242648); Zoe Angeli G. Uy (246707)
 	@version March 3, 2025
@@ -24,6 +25,17 @@ public class Line implements DrawingObject {
     private float thickness;
     private Color color;
 
+    /**
+     Constructor that initializes the values of the starting x and y positions, the ending x and y positions,
+     the thickness of the line, and the color of the line. 
+
+     @param x1 = starting x position
+     @param y1 = starting y position
+     @param x2 = ending x position
+     @param y2 = ending y position
+     @param thickness = thickness of the line
+     @param color = color of the line
+     **/
     public Line(int x1, int y1, int x2, int y2, float thickness, Color color) {
         this.color = color;
         this.thickness= thickness;
@@ -33,6 +45,12 @@ public class Line implements DrawingObject {
         this.y2 = y2;
     }
 
+    /**
+    Sets the color and thickness of the Graphics2D stroke, using fields of the object 
+    Draws the line using Graphics2D object starting at x1 and y1, and ending at x2 and y2
+
+    @param is the Graphics2D object
+    **/
     @Override
     public void draw(Graphics2D g2d){
         g2d.setColor(color);

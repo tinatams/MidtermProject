@@ -1,5 +1,6 @@
 /**
-    Health Bar Class
+    Triangle class that implements DrawingObject interphase. Cirlce uses Path2D.Double
+    object from java.awt.geom package to create the shape, and g2d object to fill in the shape. 
  
 	@author Martina Amale M. Llamas (242648); Zoe Angeli G. Uy (246707)
 	@version March 3, 2025
@@ -24,12 +25,31 @@ public class Triangle implements DrawingObject {
     private double x, y, b, h, rotation;
     private Color color = Color.BLACK;
 
+    /**
+     Constructor that initializes the values of the x and y position. As well as base and height of the triangle.  
+
+     @param x = x position
+     @param y = y position
+     @param b = base
+     @param h = height
+     **/
+
     public Triangle(double x, double y, double b, double h) {
         this.x = x;
         this.y = y;
         this.b = b;
         this.h = h;
     }
+
+    /**
+     Constructor that initializes the values of the x and y position, base and height, and color of the triangle.  
+
+     @param x = x position
+     @param y = y position
+     @param b = base
+     @param h = height
+     @param color = color
+     **/
 
     public Triangle(double x, double y, double b, double h, Color color) {
         this.x = x;
@@ -39,6 +59,13 @@ public class Triangle implements DrawingObject {
         this.color = color;
     }
 
+    /**
+    Draws the triangle by creating an instance of Path2D, moves the Graphics2D object to different places
+    to draw the shape based on the fields. Sets the color of the Graphics2D object to color (field), and 
+    then fills in the shape of Path2D.double object. 
+
+    @param is the Graphics2D object
+    **/
     @Override
     public void draw(Graphics2D g2d) {
         AffineTransform reset = g2d.getTransform();

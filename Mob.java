@@ -21,7 +21,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.*;
 
-public class Mob implements Entity, DrawingObject{
+public class Mob implements Entity{
     // basic stuff
     private int x;
     private int y;
@@ -32,7 +32,6 @@ public class Mob implements Entity, DrawingObject{
     private boolean drawable; 
     private boolean dead;
     private HealthBar health= new HealthBar(this, 15, 15);
-    private Fire fireBall;
 
     public Mob(int x, int y, double scale) {
         this.x = x;
@@ -43,7 +42,6 @@ public class Mob implements Entity, DrawingObject{
 
         drawable = true;
         dead = false;
-        fireBall = new Fire(0.3,-10,240);
     }
 
     public void takeDamage(int amount){

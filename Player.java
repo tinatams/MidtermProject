@@ -20,7 +20,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.geom.AffineTransform;
 
-public class Player implements Entity, DrawingObject{
+public class Player implements Entity{
     private HealthBar health= new HealthBar(this, -785, 15);
     private String name;
 
