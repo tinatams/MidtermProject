@@ -48,7 +48,9 @@ public class SceneFrame{
         label.addMouseListener(new ML());
         
         frame.add(label);
+        sc.setPreferredSize(new Dimension(800,600));
         frame.add(sc);
+        frame.pack();
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
