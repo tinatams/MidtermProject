@@ -167,25 +167,28 @@ public class Mob implements Entity{
         AffineTransform beforeRotate = g2d.getTransform();
         g2d.rotate(Math.toRadians(59),338.8, 213.4);
         g2d.translate(-30,-13);
- 
-        Circle highlight1 = new Circle(353.9,189.6,22.1,54.9, new Color(255, 189, 89));
-        highlight1.draw(g2d);
 
+        Ellipse2D.Double highlight1 = new Ellipse2D.Double(353.9,189.6,22.1,54.9);
+        g2d.setColor(new Color(255, 189, 89));
+        g2d.fill(highlight1);
         g2d.setTransform(beforeRotate);
-        Circle highlight2 = new Circle(380, 182, 9.3, 9.5, new Color(255, 189, 89));
-        highlight2.draw(g2d);
+        Ellipse2D.Double highlight2 = new Ellipse2D.Double(380, 182, 9.3, 9.5);
+        g2d.setColor(new Color(255, 189, 89));
+        g2d.fill(highlight2);
 
-        // eyes
-        Circle rEye1 = new Circle(318.6, 253.9, 33.8, 64.3, new Color(159, 23, 23));
-        Circle lEye1 = new Circle(408.1, 253.9, 33.8, 64.3, new Color(159, 23, 23));
-        rEye1.draw(g2d);
-        lEye1.draw(g2d);
+        //eyes
+        Ellipse2D.Double rEye1 = new Ellipse2D.Double(318.6, 253.9, 33.8, 64.3);
+        Ellipse2D.Double lEye1 = new Ellipse2D.Double(408.1, 253.9, 33.8, 64.3);
+        g2d.setColor(new Color(159, 23, 23));
+        g2d.fill(rEye1);
+        g2d.fill(lEye1);
 
-        // eyes highlights
-        Circle rEye2 = new Circle(320.4, 267.7, 15, 28.6, Color.WHITE);
-        Circle lEye2 = new Circle(410, 267.7, 15, 28.6, Color.WHITE);
-        rEye2.draw(g2d);
-        lEye2.draw(g2d);
+        //eyes highlights
+        Ellipse2D.Double rEye2 = new Ellipse2D.Double(320.4, 267.7, 15, 28.6);
+        Ellipse2D.Double lEye2 = new Ellipse2D.Double(410, 267.7, 15, 28.6);
+        g2d.setColor(Color.WHITE);
+        g2d.fill(rEye2);
+        g2d.fill(lEye2);
 
         // mouth
         Line mouth = new Line(372, 337, 372, 323, 18, new Color(159, 23, 23));
@@ -245,26 +248,30 @@ public class Mob implements Entity{
         highlight1.curveTo(302.7, 200.3, 327.3, 170.5, 349.9, 179.8);
         highlight1.curveTo(363.7, 194.95, 318.5, 225.5, 306.6, 207.8);
 
-        Circle highlight2 = new Circle(360.2, 170.5, 12, 10, new Color(255, 189, 89));
+        Ellipse2D.Double highlight2 = new Ellipse2D.Double(360.2, 170.5, 12, 10);
         g2d.setColor(new Color(255, 189, 89));
         g2d.fill(highlight1);
-        highlight2.draw(g2d);
+        g2d.fill(highlight2);
 
-        // eyes
-        Circle rEye1 = new Circle(314.5, 237.4, 33.8, 64.3, new Color(159, 23, 23));
-        Circle lEye1 = new Circle(404.1, 237.4, 33.8, 64.3, new Color(159, 23, 23));
-        rEye1.draw(g2d);
-        lEye1.draw(g2d);
+        //eyes
+        Ellipse2D.Double rEye1 = new Ellipse2D.Double(314.5, 237.4, 33.8, 64.3);
+        Ellipse2D.Double lEye1 = new Ellipse2D.Double(404.1, 237.4, 33.8, 64.3);
+        g2d.setColor(new Color(159, 23, 23));
+        g2d.fill(rEye1);
+        g2d.fill(lEye1);
 
-        // eyes highlights
-        Circle rEye2 = new Circle(316.4, 251.1, 15, 28.6, Color.WHITE);
-        Circle lEye2 = new Circle(406, 251.1, 15, 28.6, Color.WHITE);
-        rEye2.draw(g2d);
-        lEye2.draw(g2d);
+        //eyes highlights
+        Ellipse2D.Double rEye2 = new Ellipse2D.Double(316.4, 251.1, 15, 28.6);
+        Ellipse2D.Double lEye2 = new Ellipse2D.Double(406, 251.1, 15, 28.6);
+        g2d.setColor(Color.WHITE);
+        g2d.fill(rEye2);
+        g2d.fill(lEye2);
 
-        // mouth
-        Circle mouth = new Circle(358.3, 306.3, 20.4, 23.3, new Color(159, 23, 23));
-        mouth.draw(g2d);
+
+        //mouth
+        Ellipse2D.Double mouth = new Ellipse2D.Double(358.3, 306.3, 20.4, 23.3);
+        g2d.setColor(new Color(159, 23, 23));
+        g2d.fill(mouth);
 
         g2d.setTransform(reset);
     }
@@ -323,26 +330,30 @@ public class Mob implements Entity{
         highlight1.curveTo(356.5, 243.6, 317, 262.1, 306.7, 257.3);
         highlight1.closePath();
 
-        Circle highlight2 = new Circle(366, 214, 10, 7, new Color(255, 189, 89));
+        Ellipse2D.Double highlight2 = new Ellipse2D.Double(366, 214, 10, 7);
         g2d.setColor(new Color(255, 189, 89));
         g2d.fill(highlight1);
-        highlight2.draw(g2d);
+        g2d.fill(highlight2);
 
         //eyes
-        Circle rEye1 = new Circle(306, 275.3, 33.8, 64.3, new Color(159, 23, 23));
-        Circle lEye1 = new Circle(395.6, 275.3, 33.8, 64.3, new Color(159, 23, 23));
-        rEye1.draw(g2d);
-        lEye1.draw(g2d);
+        Ellipse2D.Double rEye1 = new Ellipse2D.Double(306, 275.3, 33.8, 64.3);
+        Ellipse2D.Double lEye1 = new Ellipse2D.Double(395.6, 275.3, 33.8, 64.3);
+        g2d.setColor(new Color(159, 23, 23));
+        g2d.fill(rEye1);
+        g2d.fill(lEye1);
 
         //eyes highlights
-        Circle rEye2 = new Circle(307.9, 289, 15, 28.6, Color.WHITE);
-        Circle lEye2 = new Circle(397.5, 289, 15, 28.6, Color.WHITE);
-        rEye2.draw(g2d);
-        lEye2.draw(g2d);
+        Ellipse2D.Double rEye2 = new Ellipse2D.Double(307.9, 289, 15, 28.6);
+        Ellipse2D.Double lEye2 = new Ellipse2D.Double(397.5, 289, 15, 28.6);
+        g2d.setColor(Color.WHITE);
+        g2d.fill(rEye2);
+        g2d.fill(lEye2);
+
 
         //mouth
-        Circle mouth = new Circle(349.8, 344.1, 20.4, 23.3, new Color(159, 23, 23));
-        mouth.draw(g2d);
+        Ellipse2D.Double mouth = new Ellipse2D.Double(349.8, 344.1, 20.4, 23.3);
+        g2d.setColor(new Color(159, 23, 23));
+        g2d.fill(mouth);
 
         g2d.setTransform(reset);
     }
@@ -402,14 +413,14 @@ public class Mob implements Entity{
         highlight1.curveTo(354.9, 156.6, 314, 182.3, 325.5, 199);
         highlight1.closePath();
 
-        Circle highlight2 = new Circle(380, 158.9, 10.5, 8.8, new Color(255, 189, 89));
+        Ellipse2D.Double highlight2= new Ellipse2D.Double(380, 158.9, 10.5, 8.8);
         g2d.setColor(new Color(255, 189, 89));
-        g2d.fill(highlight1);
-        highlight2.draw(g2d);
+        g2d.fill(highlight2);
 
         //mouth
-        Circle mouth = new Circle(373.5, 294.7, 20.4, 23.3, new Color(159, 23, 23));
-        mouth.draw(g2d);
+        Ellipse2D.Double mouth = new Ellipse2D.Double(373.5, 294.7, 20.4, 23.3);
+        g2d.setColor(new Color(159, 23, 23));
+        g2d.fill(mouth);
 
         g2d.setTransform(reset);
     }
@@ -477,28 +488,29 @@ public class Mob implements Entity{
         g2d.scale(scale, scale);
 
         //base color body
-        Circle base1 = new Circle(354.4, 329.3, 180, 90, new Color(255,87,87));
-        Circle base2 = new Circle(224.5, 352, 180, 90, new Color(255,87,87));
-        Circle base3 = new Circle(354.4, 397, 143.9, 72, new Color(255,87,87));
-        Circle base4 = new Circle(467.5, 352, 108, 54, new Color(255,87,87));
-
-        base1.draw(g2d);
-        base2.draw(g2d);
-        base3.draw(g2d);
-        base4.draw(g2d);
+        Ellipse2D.Double base1 = new Ellipse2D.Double(354.4, 329.3, 180, 90);
+        Ellipse2D.Double base2 = new Ellipse2D.Double(224.5, 352, 180, 90);
+        Ellipse2D.Double base3 = new Ellipse2D.Double(354.4, 397, 143.9, 72);
+        Ellipse2D.Double base4 = new Ellipse2D.Double(467.5, 352, 108, 54);
+        g2d.setColor(new Color(255,87,87));
+        g2d.fill(base1);
+        g2d.fill(base2);
+        g2d.fill(base3);
+        g2d.fill(base4);
+        
 
         // MID COLOR
-        Circle mid1 = new Circle(244.2, 358.2, 143.8, 65.8, new Color(255, 145, 77));
-        Circle mid2 = new Circle(367, 333.1, 154.5, 73.2, new Color(255, 145, 77));
-        Circle mid3 = new Circle(364.5, 395.7, 122.3, 60.7, new Color(255, 145, 77));
-        Circle mid4 = new Circle(480.9, 356.2, 87.1, 39.5, new Color(255, 145, 77));
-        Circle mid5 = new Circle(370, 389.1, 46.3, 22.7, new Color(255, 145, 77));    
+        Ellipse2D.Double mid1 = new Ellipse2D.Double(244.2, 358.2, 143.8, 65.8);
+        Ellipse2D.Double mid2 = new Ellipse2D.Double(367, 333.1, 154.5, 73.2);
+        Ellipse2D.Double mid3 = new Ellipse2D.Double(364.5, 395.7, 122.3, 60.7);
+        Ellipse2D.Double mid4 = new Ellipse2D.Double(480.9, 356.2, 87.1, 39.5);
+        Ellipse2D.Double mid5 = new Ellipse2D.Double(370, 389.1, 46.3, 22.7);
+        g2d.setColor(new Color(255, 145, 77));
+        g2d.fill(mid1);
+        g2d.fill(mid2);
+        g2d.fill(mid3);
+        g2d.fill(mid4);
 
-        mid1.draw(g2d);
-        mid2.draw(g2d);
-        mid3.draw(g2d);
-        mid4.draw(g2d);
-        mid5.draw(g2d);
 
         //HIGHLIGHTS
         Path2D.Double highlight1 = new Path2D.Double();
