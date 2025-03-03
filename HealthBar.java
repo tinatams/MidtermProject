@@ -46,20 +46,27 @@ public class HealthBar implements DrawingObject{
     }
 
 	public void draw(Graphics2D g2d){
-		Square background = new Square(0 + x, 0 + y, MAX_HEALTH * 2.5, 25, Color.GRAY);
-		Square currentPoints = new Square(0 + x, 0 + y, currentHealth * 2.5, 25);
+		Rectangle2D.Double background = new Rectangle2D.Double(0 + x, 0 + y, MAX_HEALTH * 2.5, 25);
+		Rectangle2D.Double currentPoints = new Rectangle2D.Double(0 + x, 0 + y, currentHealth * 2.5, 25);
+		Color c= new Color(0,0,0);
 
 		if (currentHealth >= 75){
-			currentPoints = new Square(0 + x, 0 + y, currentHealth * 2.5, 25, Color.GREEN);
+			currentPoints = new Rectangle2D.Double(0 + x, 0 + y, currentHealth * 2.5, 25);
+			c=Color.GREEN;
 		} else if (currentHealth >= 50){
-			currentPoints = new Square(0 + x, 0 + y, currentHealth * 2.5, 25, Color.YELLOW);
+			currentPoints = new Rectangle2D.Double(0 + x, 0 + y, currentHealth * 2.5, 25);
+			c=Color.YELLOW;
 		} else if (currentHealth >= 25){
-			currentPoints = new Square(0 + x, 0 + y, currentHealth * 2.5, 25, Color.ORANGE);
-		} else{
-			currentPoints = new Square(0 + x, 0 + y, currentHealth * 2.5, 25, Color.RED);
+			currentPoints = new Rectangle2D.Double(0 + x, 0 + y, currentHealth * 2.5, 25);
+			c=Color.ORANGE;
+		} else if (currentHealth >= 10){
+			currentPoints = new Rectangle2D.Double(0 + x, 0 + y, currentHealth * 2.5, 25);
+			c=Color.RED;
 		}
-		background.draw(g2d);
-		currentPoints.draw(g2d);
+		g2d.setColor(Color.GRAY);
+	        g2d.fill(background);
+		g2d.setColor(c);
+	        g2d.fill(currentPoints);
 			
 
 	}
