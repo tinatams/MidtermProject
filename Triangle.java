@@ -21,7 +21,8 @@ import java.awt.*;
 import java.awt.geom.*;
 
 public class Triangle implements DrawingObject {
-    public double x, y, b, h;
+    private double x, y, b, h, rotation;
+    private Color color = Color.BLACK;
 
     public Triangle(double x, double y, double b, double h) {
         this.x = x;
@@ -30,16 +31,21 @@ public class Triangle implements DrawingObject {
         this.h = h;
     }
 
-    @Override
-    public void draw(Graphics2D g2d) {
-        Path2D.Double p = new Path2D.Double();
-        p.moveTo(x,y);
-        p.lineTo(x,y+h);
-        p.lineTo(x+b,y+h);
-        p.lineTo(x,y);
+    public Triangle(double x, double y, double b, double h, Color color) {
+        this.x = x;
+        this.y = y;
+        this.b = b;
+        this.h = h;
+        this.color = color;
     }
 
-    public void draw(Graphics2D g2d, Color color) {
+    @Override
+    public void draw(Graphics2D g2d) {
+        AffineTransform reset = g2d.getTransform();
+
+        g2d.setColor(color);
+        g2d.rotate(Math.toRadians(rotation), x, y);
+
         Path2D.Double p = new Path2D.Double();
         p.moveTo(x,y);
         p.lineTo(x,y+h);
@@ -47,8 +53,28 @@ public class Triangle implements DrawingObject {
         p.lineTo(x,y);
         g2d.setColor(color);
         g2d.fill(p);
+
+        g2d.setTransform(reset);
     }
 
+    public void draw(Graphics2D g2d, Color color) {
+        AffineTransform reset = g2d.getTransform();
 
+        g2d.setColor(color);
+        g2d.rotate(Math.toRadians(rotation), x, y);
 
+        Path2D.Double p = new Path2D.Double();
+        p.moveTo(x,y);
+        p.lineTo(x,y+h);
+        p.lineTo(x+b,y+h);
+        p.lineTo(x,y);
+        g2d.setColor(color);
+        g2d.fill(p);
+
+        g2d.setTransform(reset);
+    }
+
+    public void setRot(double rotation){
+        this.rotation = rotation;
+    }
 }

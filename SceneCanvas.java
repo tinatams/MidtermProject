@@ -44,7 +44,6 @@ public class SceneCanvas extends JComponent {
     
 
     public SceneCanvas(){
-        assests = new ArrayList<DrawingObject>();
         endScreen = new ArrayList<DrawingObject>();
         setUpEndScreen();
 

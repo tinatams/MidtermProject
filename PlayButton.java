@@ -37,8 +37,8 @@ public class PlayButton implements DrawingObject{
         g2d.translate(x, y);
 
         Circle base = new Circle(0 ,0, 180, 180, baseColor);
-        RightTri tri = new RightTri(110, 90, 1.2, playColor);
-        tri.setRot(135);
+        Triangle tri = new Triangle(80, 130, 60, 60, playColor);
+        tri.setRot(90+90+45);
 
         base.draw(g2d);
         tri.draw(g2d);
