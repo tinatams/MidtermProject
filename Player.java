@@ -1,8 +1,8 @@
 /**
-	Player class that has fields of name and health points. Has the method takeDamage, which makes the player take damage
-	
-	@author Martina Amale M. Llamas (242648); INSERT ZOE INFO
-	@version February 11, 2025
+    Health Bar Class
+ 
+	@author Martina Amale M. Llamas (242648); Zoe Angeli G. Uy (246707)
+	@version March 3, 2025
 	
 	I have not discussed the Java language code in my program 
 	with anyone other than my instructor or the teaching assistants 
