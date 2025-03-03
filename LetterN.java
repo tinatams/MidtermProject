@@ -35,12 +35,12 @@ public class LetterN implements DrawingObject{
         AffineTransform reset = g2d.getTransform();
         g2d.translate(x, y);
 
-        Square vertBlock = new Square(0, 0, 23, 180, color);
-        Square vertBlock2 = new Square(103, 0, 23, 180, color);
+        Rectangle2D.Double vertBlock = new Rectangle2D.Double(0, 0, 23, 180);
+        Rectangle2D.Double vertBlock2 = new Rectangle2D.Double(103, 0, 23, 180);
+        g2d.setColor(color);
+        g2d.fill(vertBlock);
+        g2d.fill(vertBlock2);
         Line diagBlock = new Line(20, 14, 106, 165, 21, color);
-
-        vertBlock.draw(g2d);
-        vertBlock2.draw(g2d);
         diagBlock.draw(g2d);
 
         g2d.setTransform(reset);
