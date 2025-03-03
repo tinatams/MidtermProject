@@ -22,55 +22,22 @@ import java.awt.*;
 import java.awt.geom.*;
 
 public class Circle implements DrawingObject {
-    private double x, y, w, h;
-    private Color color = Color.black;
+    public double x, y, s;
+    public Color color = new Color(41, 0, 36);
 
-    /**
-     Constructor that initializes the values of the x and y position. As well as width and height of the circle.  
-
-     @param x = x position
-     @param y = y position
-     @param w = width
-     @param h = height
-     **/
-
-    public Circle(double x, double y, double w, double h) {
+    public Circle(double x, double y, double s, Color color) {
         this.x = x;
         this.y = y;
-        this.w = w;
-        this.h = h;
-    }
-
-    /**
-     Constructor that initializes the values of the x and y position, width and height, and color of the circle.  
-
-     @param x = x position
-     @param y = y position
-     @param w = width
-     @param h = height
-     @param color = color
-     **/
-
-    public Circle(double x, double y, double w, double h, Color color) {
-        this.x = x;
-        this.y = y;
-        this.w = w;
-        this.h = h;
+        this.s =s;
         this.color = color;
     }
 
-    /**
-    Draws the circle object by creating an instance of Ellipse2D using the fields as the inputs. 
-    Sets the color of the Graphics2D object to color (field), and then fills in the shape.
-    of Ellipse2D.double object. 
-
-    @param is the Graphics2D object
-    **/
     @Override
     public void draw(Graphics2D g2d) {
-        Ellipse2D.Double circle = new Ellipse2D.Double(x, y, w, h);
+        Ellipse2D.Double circle = new Ellipse2D.Double(x, y, s,s);
         g2d.setColor(color);
         g2d.fill(circle);
+
     }
 
 }
