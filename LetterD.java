@@ -36,17 +36,9 @@ public class LetterD implements DrawingObject{
         AffineTransform reset = g2d.getTransform();
         g2d.translate(x, y);
 
-        Square vertBlock = new Square(0, 0, 23, 180, color);
-        vertBlock.draw(g2d);
-
-        // this works but when paiting in DrawingCanvas it will draw on TOP of the background could be a problem lawl
-        // Circle outerCircle = new Circle(-76.8, -0.9, 180, 180, color);
-        // Circle innerCircle = new Circle(-76.8, 20.3, 155.3, 137.6, new Color(238, 238, 238));
-        // Square removeStuff = new Square(-166, 0, 168, 180, new Color(238, 238, 238));
-        
-        // outerCircle.draw(g2d);
-        // innerCircle.draw(g2d);
-        // removeStuff.draw(g2d)
+        Rectangle2D.Double vertBlock = new Rectangle2D.Double(0, 0, 23, 180);
+        g2d.setColor(color);
+        g2d.fill(vertBlock);
 
         Path2D.Double arc = new Path2D.Double();
         arc.moveTo(0,0);
