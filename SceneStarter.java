@@ -1,8 +1,7 @@
-public class SceneStarter {
-    
+public class SceneStarter{
+    static SceneFrame a;
     public static void main(String[] args) throws Exception{
-        SceneFrame a= new SceneFrame();
+        a = new SceneFrame();
         a.setUpGUI();
-    
     }
 }

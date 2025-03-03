@@ -1,7 +1,7 @@
 /**
     Health Bar Class
  
-	@author Martina Amale M. Llamas (242648); INSERT ZOE INFO
+	@author Martina Amale M. Llamas (242648); Zoe Angeli G. Uy (246707)
 	@version February 11, 2025
 	
 	I have not discussed the Java language code in my program 
@@ -55,7 +55,7 @@ public class HealthBar implements DrawingObject{
 			currentPoints = new Square(0 + x, 0 + y, currentHealth * 2.5, 25, Color.YELLOW);
 		} else if (currentHealth >= 25){
 			currentPoints = new Square(0 + x, 0 + y, currentHealth * 2.5, 25, Color.ORANGE);
-		} else if (currentHealth >= 10){
+		} else{
 			currentPoints = new Square(0 + x, 0 + y, currentHealth * 2.5, 25, Color.RED);
 		}
 		background.draw(g2d);

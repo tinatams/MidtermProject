@@ -19,7 +19,7 @@ public class SceneCanvas extends JComponent {
 
     private boolean ableAttack;
     private boolean scheduleAttack;
-    public boolean gameOver;
+    public boolean gameOver, timeToRest;
 
     private Random rand = new Random();
     
@@ -40,6 +40,7 @@ public class SceneCanvas extends JComponent {
         ableAttack = false;
         scheduleAttack = false; 
         gameOver = false;
+        timeToRest = false;
 
     }
 
@@ -61,11 +62,12 @@ public class SceneCanvas extends JComponent {
         if (gameOver){
             cave.draw(g2d);
             Rectangle2D.Double over = new Rectangle2D.Double(0, 0, 800, 600);
-            g2d.setColor(new Color(94, 76, 74, 75));
+            g2d.setColor(new Color(94, 76, 74, 128));
             g2d.fill(over);
             for (DrawingObject object : endScreen){
-                    object.draw(g2d);
-                }
+                object.draw(g2d);
+            }
+            timeToRest = true;
         } else {
             cave.draw(g2d);
             user.draw(g2d);
@@ -113,7 +115,7 @@ public class SceneCanvas extends JComponent {
             npc.takeDamage(10);
         } 
 
-        if (npc.getHealth() <= 0){
+        if (npc.getHealth() <= 0 && npc.dead() != true){
             npc.setVersion(181);
             npc.dead();
         } 
@@ -133,7 +135,7 @@ public class SceneCanvas extends JComponent {
             }
         };
 
-        int randomInterval = (rand.nextInt(10-3) + 3) * 1000;
+        int randomInterval = (rand.nextInt(8-2) + 3) * 1000;
         timer.schedule(task, randomInterval );
         scheduleAttack = true;
 
