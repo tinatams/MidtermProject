@@ -87,10 +87,10 @@ public class SceneCanvas extends JComponent {
         
         if (gameOver){
             cave.draw(g2d);
-	    for(int i=0;i<4;i++){
-	            background_highlights.get(i).draw(g2d);
-	            g2d.translate(500, 25);
-	            background_highlights.get(i).draw(g2d);
+            for(int i=0;i<4;i++){
+                background_highlights.get(i).draw(g2d);
+                g2d.translate(500, 25);
+                background_highlights.get(i).draw(g2d);
 	            g2d.translate(-500, -25);
             }
             Rectangle2D.Double over = new Rectangle2D.Double(0, 0, 800, 600);
@@ -102,6 +102,12 @@ public class SceneCanvas extends JComponent {
             timeToReset = true;
         } else {
             cave.draw(g2d);
+            for(int i=0;i<4;i++){
+                background_highlights.get(i).draw(g2d);
+                g2d.translate(500, 25);
+                background_highlights.get(i).draw(g2d);
+	            g2d.translate(-500, -25);
+            }
             user.draw(g2d);
             if (npc.getDrawable()){
                 npc.draw(g2d);

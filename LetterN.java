@@ -19,6 +19,7 @@
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.*;
 
 public class LetterN implements DrawingObject{
     private double x, y, scale;

@@ -20,6 +20,7 @@
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Path2D;
+import java.awt.geom.*;
 
 public class LetterD implements DrawingObject{
     private double x, y, scale;

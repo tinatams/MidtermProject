@@ -86,6 +86,5 @@ public class Stone1 implements DrawingObject{
         square23.draw(g2d);
         square24.draw(g2d);
     }
-    }
 
 }

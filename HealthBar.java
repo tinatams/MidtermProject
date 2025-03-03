@@ -18,6 +18,7 @@
 **/
 
 import java.awt.*;
+import java.awt.geom.*;
 
 public class HealthBar implements DrawingObject{
     private final int MAX_HEALTH = 100;
