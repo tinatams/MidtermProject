@@ -2,7 +2,6 @@
     Crescent class that implements DrawingObject interphase. Cirlce uses Path2D.Double 
     object from java.awt.geom package to create the package, and g2d object to fill in the shape. 
 
- 
 	@author Martina Amale M. Llamas (242648); Zoe Angeli G. Uy (246707)
 	@version March 3, 2025
 	

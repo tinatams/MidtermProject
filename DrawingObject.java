@@ -27,5 +27,6 @@ public interface DrawingObject{
 
      @param g2d = Graphics2D object to be use to draw graphics. 
      **/
+	
     public void draw(Graphics2D g2d);
 }

@@ -1,5 +1,5 @@
 /**
-    Health Bar Class
+    The HealthBar class represents the 
  
 	@author Martina Amale M. Llamas (242648); Zoe Angeli G. Uy (246707)
 	@version March 3, 2025
@@ -60,7 +60,7 @@ public class HealthBar implements DrawingObject{
 		} else if (currentHealth >= 25){
 			currentPoints = new Rectangle2D.Double(0 + x, 0 + y, currentHealth * 2.5, 25);
 			c=Color.ORANGE;
-		} else if (currentHealth >= 10){
+		} else {
 			currentPoints = new Rectangle2D.Double(0 + x, 0 + y, currentHealth * 2.5, 25);
 			c=Color.RED;
 		}
