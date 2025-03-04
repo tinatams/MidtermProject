@@ -99,10 +99,11 @@ public class Player implements Entity{
         int code = e.getKeyCode();
 
         if (code == KeyEvent.VK_D){
-            move(speed);
+            if (x < 80) move(speed);
         }
 
         else if (code == KeyEvent.VK_A){
+            if (x < -380) move(speed);
             move(-speed);
         }
 
