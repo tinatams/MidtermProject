@@ -1,5 +1,6 @@
 /**
-    Health Bar Class
+    Contains the main method of the program. Instantiates a SceneFrame object and calls
+	the setUpGUI() method.
  
 	@author Martina Amale M. Llamas (242648); Zoe Angeli G. Uy (246707)
 	@version March 3, 2025
@@ -19,6 +20,9 @@
 
 public class SceneStarter{
     static SceneFrame a;
+	/**
+        Instantiates a new SceneFrame object, and calls setUpGUI() method
+    **/
     public static void main(String[] args) throws Exception{
         a = new SceneFrame();
         a.setUpGUI();

@@ -1,5 +1,9 @@
 /**
-    Health Bar Class
+    The Fire class represents a fire attack from a Mob object and implements the DrawingObject interface, 
+    allowing it to be drawn. It has x and y coordinate fields, an originalX field to store its initial
+    position, and a scale field to determine its size. Additionally, it includes a drawable field to 
+    indicate whether it can be drawn and an attacking field to track whether it is actively being used 
+    as an attack. 
  
 	@author Martina Amale M. Llamas (242648); Zoe Angeli G. Uy (246707)
 	@version March 3, 2025
@@ -22,7 +26,6 @@ import java.awt.event.*;
 import java.awt.geom.*;
 
 public class Mob implements Entity{
-    // basic stuff
     private int x;
     private int y;
     private double scale;
@@ -33,6 +36,15 @@ public class Mob implements Entity{
     private boolean dead;
     private HealthBar health= new HealthBar(this, 15, 15);
 
+     /**
+        Constructor that initializes the values of the x and y position. As well as size and color 
+        of the object
+
+        @param x = x position of the object
+        @param y = y position of the object
+        @param scale = size of the object
+        @param color = color of the object
+    **/
     public Mob(int x, int y, double scale) {
         this.x = x;
         this.y = y;
@@ -44,34 +56,12 @@ public class Mob implements Entity{
         dead = false;
     }
 
-    public void takeDamage(int amount){
-        health.takeHealth(amount);
-    }
+    /**
+        If Mib is currently drawable, then the character will have a particular frame drawn
+        depending on what 'version'/frane of the mob to draw out.
 
-    public int getHealth(){
-        return health.getCurrentHealth();
-    }
-
-    public boolean dead(){
-       return dead; 
-    }
-
-    public HealthBar getHealthBar(){
-        return health;
-    }
-
-    public void setDrawable(boolean newSet){
-        drawable = newSet;
-    }
-
-    public boolean getDrawable(){
-        return drawable;
-    }
-
-    public void setVersion(int newVersion){
-        version = newVersion;
-    }
-
+        @param is the Graphics2D object
+    **/
     public void draw(Graphics2D g2d){
         AffineTransform reset = g2d.getTransform();
 
@@ -115,8 +105,66 @@ public class Mob implements Entity{
         g2d.setTransform(reset);
     }
 
+    //idk if i should remove this tbh
     public void update(KeyEvent e){
         int code = e.getKeyCode();
+    }
+
+    /**
+	 	Takes health from the mob's/objects health, by calling the takeHealth method on the HealthBar
+        object of the mob object.
+     	@param amount to be removed from the health
+    **/
+    public void takeDamage(int amount){
+        health.takeHealth(amount);
+    }
+
+    /** 
+		Gets the current health
+		@return the current health of mob
+	**/
+    public int getHealth(){
+        return health.getCurrentHealth();
+    }
+
+    /** 
+		Gets the HealthBar object of the class
+		@return HealthBar object that represents the health of the mob object
+	**/
+    public HealthBar getHealthBar(){
+        return health;
+    }
+
+    /** 
+		Gets the boolean field that represents whether an object is dead or alive.
+		@return HealthBar object that represents the health of the mob object
+	**/
+    public boolean dead(){
+       return dead; 
+    }
+
+    /** 
+		Sets if the mob is alive or dead
+		@param the boolean that will be set to drawable field. 
+	**/
+    public void setDrawable(boolean newSet){
+        drawable = newSet;
+    }
+
+    /** 
+		Gets the boolean field that represents whether an object can be drawn.
+		@return true or false, depending if the object is able to be drawn
+	**/
+    public boolean getDrawable(){
+        return drawable;
+    }
+
+    /** 
+		Sets which version/ frame of the mob to be drawn when draw method is called
+		@param the int value that will be set to versin field. 
+	**/
+    public void setVersion(int newVersion){
+        version = newVersion;
     }
 
     public void drawFrame1(Graphics2D g2d){

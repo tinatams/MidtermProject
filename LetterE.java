@@ -1,5 +1,6 @@
 /**
-    Health Bar Class
+    LetterE class that implements DrawingObject interphase. LetterE uses Rectangle2D.Double object 
+    from java.awt.geom package to create the shape of the letter E, and g2d object to fill in the shape. 
  
 	@author Martina Amale M. Llamas (242648); Zoe Angeli G. Uy (246707)
 	@version March 3, 2025
@@ -18,13 +19,21 @@
 **/
 
 import java.awt.*;
-import java.awt.geom.AffineTransform;
 import java.awt.geom.*;
 
 public class LetterE implements DrawingObject{
     private double x, y, scale;
     private Color color;
 
+    /**
+        Constructor that initializes the values of the x and y position. As well as size and color 
+        of the object
+
+        @param x = x position of the object
+        @param y = y position of the object
+        @param scale = size of the object
+        @param color = color of the object
+    **/
     public LetterE(double x, double y, double scale, Color color){
         this.x = x;
         this.y = y;
@@ -32,6 +41,13 @@ public class LetterE implements DrawingObject{
         this.color = color;
     }
 
+    /**
+        Initializes Rectangle2D objects to create the horizontal and vertical lines of the letter E. 
+        Sets the color of the Graphics2D object to color (field), and then fills in the shape of the
+        Rectangle2D objects. 
+
+        @param is the Graphics2D object
+    **/
     public void draw(Graphics2D g2d){
         AffineTransform reset = g2d.getTransform();
         g2d.translate(x, y);

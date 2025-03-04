@@ -1,5 +1,7 @@
 /**
-    Health Bar Class
+    SceneFrame contains GUI components of the program. Also contains inner classes that handles
+    events such as Mouse and Keyboard events. Allows for continuous repainting of SceneCanvas to 
+    allow for movement/ changes of SceneCanvas to be seen. 
  
 	@author Martina Amale M. Llamas (242648); Zoe Angeli G. Uy (246707)
 	@version March 3, 2025
@@ -29,6 +31,9 @@ public class SceneFrame{
     private Container c;
     private JLabel label;
 
+    /**
+        Instantiate GUI components (JFrame, JLabel, SceneCanvas) for the GUI of program. 
+    **/
     public SceneFrame(){
         frame = new JFrame();
         c = frame.getContentPane();
@@ -36,6 +41,9 @@ public class SceneFrame{
         sc = new SceneCanvas();
     }
     
+    /**
+        Sets up the elements of the JFrame, sets bounds for JLabel to be used as a button for end screen. 
+    **/
     public void setUpGUI() throws InterruptedException{
         frame.setTitle("Midterm Project - Llamas - Uy");
         c.setBackground(new Color(115, 39, 71));
@@ -56,12 +64,20 @@ public class SceneFrame{
         render();
     }
 
+    /**
+        AL extends Abstract class KeyAdaptor to act as a keyboard listener. Used check on KeyEvents
+        (to check when a key is pressed) that are passed to update method of SceneCanvas.
+    **/
     public class AL extends KeyAdapter{
         public void keyPressed(KeyEvent e) {
             sc.update(e);
         }
     }
 
+    /**
+        ML extends Abstract class MouseAdaptor to act as a mouse listener. Used check on MouseEvents
+        (to check when mouse is clicked) and resets SceneCanvas.
+    **/
     public class ML extends MouseAdapter{
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -77,6 +93,10 @@ public class SceneFrame{
         }
     }
 
+    /**
+        Uses a Timer object to schedule SceneCanvas to be continuously repainted using TimerTask object, 
+        until SceneCanvas game is over and needs to be reset. 
+    **/
     public void render(){
         Timer timer = new Timer();
         TimerTask task = new TimerTask(){

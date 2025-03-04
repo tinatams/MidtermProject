@@ -1,5 +1,7 @@
 /**
-    Health Bar Class
+    SceneCanvas extends JComponent and is the 'canvas' object that contains majority of the animations.
+    It does this by having instances of objects that can be drawn (implement DrawingObjet interface) and 
+    draws them out to create out scene. 
  
 	@author Martina Amale M. Llamas (242648); Zoe Angeli G. Uy (246707)
 	@version March 3, 2025
@@ -43,10 +45,21 @@ public class SceneCanvas extends JComponent {
     private Random rand = new Random();
     
 
+    /**
+        Sets the preferred size of the canvas, as well as instanciates and sets original object values. 
+
+        ableAttack = false
+        scheduleAttack = false
+        gameOver = false
+        timeToRest = false
+     **/
     public SceneCanvas(){
         setPreferredSize(new Dimension(800,600));
         endScreen = new ArrayList<DrawingObject>();
-        setUpEndScreen();
+        endScreen.add(new LetterE(172.1, 55, 1, Color.BLACK));
+        endScreen.add(new LetterD(504.9, 55, 1, Color.BLACK));
+        endScreen.add(new LetterN(325.3, 55, 1, Color.BLACK));
+        endScreen.add(new PlayButton(310, 281, 1, Color.black, Color.white));
 
         cave = new Background();
 
@@ -70,13 +83,11 @@ public class SceneCanvas extends JComponent {
 
     }
 
-    public void setUpEndScreen(){
-        endScreen.add(new LetterE(172.1, 55, 1, Color.BLACK));
-        endScreen.add(new LetterD(504.9, 55, 1, Color.BLACK));
-        endScreen.add(new LetterN(325.3, 55, 1, Color.BLACK));
-        endScreen.add(new PlayButton(310, 281, 1, Color.black, Color.white));
-    }
-    
+    /**
+        If the game is over will paint the end screen with a play button, with the cave background behind the 
+        END and PlayButton. While the game is still going, will draw the mob, player, and health bar objects. 
+        Checks states of player and npc objects to modify the state of the game (gameOver, drawable of objects).
+    **/
     @Override
     protected void paintComponent(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
@@ -121,21 +132,27 @@ public class SceneCanvas extends JComponent {
             g2d.setTransform(reset);
 
             npcHealth.draw(g2d);
+        }
 
-            if (!scheduleAttack && (npc.dead()!= true)){
-                scheduleAttack();
-            }
+        if (!scheduleAttack && (npc.dead()!= true)){
+            scheduleAttack();
+        }
 
-            if (user.getHealth() <= 0){
-                user.setDrawable(false);
-            }
+        if (user.getHealth() <= 0){
+            user.setDrawable(false);
+        }
 
-            if (npc.getDrawable() == false || user.getDrawable() == false){
-                gameOver = true;
-            }
+        if (npc.getDrawable() == false || user.getDrawable() == false){
+            gameOver = true;
         }
     }
 
+    /**
+        Updates the positions, actions, and states of various drawable components. 
+        Handles 'animations' and movement, including changes in a character's pose or action.
+         Responsible for updating character states and fields, such as reducing an NPC's 
+         health when an attack action is triggered within a valid attack area.
+     **/
     public void update(KeyEvent e){
         user.update(e);
         npc.update(e);
@@ -161,6 +178,11 @@ public class SceneCanvas extends JComponent {
         } 
     }
 
+    /**
+        Schedules a random attack for the mob object/ enemy object. This is done through scheduling a task
+        to be done after a randomized amount of time (between 2-8 seconds). It then sets up a timer to make 
+        the attak (fireball), seen 1 second before the attack is carried out as a warning for a oncoming attack. 
+     **/
     public void scheduleAttack(){
         Timer timer = new Timer();
         TimerTask task = new TimerTask(){
@@ -175,7 +197,7 @@ public class SceneCanvas extends JComponent {
             }
         };
 
-        int randomInterval = (rand.nextInt(8-2) + 3) * 1000;
+        int randomInterval = (rand.nextInt(8-2) + 2) * 1000;
         timer.schedule(task, randomInterval );
         scheduleAttack = true;
 
@@ -192,6 +214,10 @@ public class SceneCanvas extends JComponent {
         timer2.schedule(task2, (randomInterval - 1000));
     }
 
+    /** 
+		Gets the current state of the game and if it needs to be reset (ex: if either of the players died)
+		@return boolean to represent if the Scene is over and needs to be reset
+	**/
     public boolean getTimeToReset() {
         return timeToReset;
     }

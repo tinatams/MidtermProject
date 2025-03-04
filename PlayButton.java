@@ -1,6 +1,7 @@
 /**
-    Health Bar Class
- 
+    PlayerButton class is a composite shape that is comprised of a Circle and a Triangle object. Since this 
+    class is drawn it uses DrawingObject interphase.
+
 	@author Martina Amale M. Llamas (242648); Zoe Angeli G. Uy (246707)
 	@version March 3, 2025
 	
@@ -24,14 +25,30 @@ public class PlayButton implements DrawingObject{
     private double x, y, scale, rotation;
     private Color baseColor, playColor;
 
+    /**
+        Constructor that initializes the values of the x and y position. As well as size and colors 
+        of the object
+
+        @param x = x position of the object
+        @param y = y position of the object
+        @param scale = size of the object
+        @param baseColor = color of the circle object
+        @param playColor = color of the triangle object
+     **/
     public PlayButton(double x, double y, double scale, Color baseColor, Color playColor){
         this.x = x;
         this.y = y;
         this.scale = scale;
         this.baseColor = baseColor;
         this.playColor = playColor;
-    }
+    }   
 
+    /**
+        Draws the Play Button objet by instantiating a Circle object and a Triangle object. And then calls
+        the draw method on them to draw them out. 
+        
+        @param is the Graphics2D object
+    **/
     public void draw(Graphics2D g2d){
         AffineTransform reset = g2d.getTransform();
         g2d.translate(x, y);
