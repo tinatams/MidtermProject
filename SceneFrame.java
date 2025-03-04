@@ -37,7 +37,6 @@ public class SceneFrame{
     }
     
     public void setUpGUI() throws InterruptedException{
-        frame.setSize(800, 600);
         frame.setTitle("Midterm Project - Llamas - Uy");
         c.setBackground(new Color(115, 39, 71));
         frame.addKeyListener(new AL());
@@ -48,7 +47,6 @@ public class SceneFrame{
         label.addMouseListener(new ML());
         
         frame.add(label);
-        sc.setPreferredSize(new Dimension(800,600));
         frame.add(sc);
         frame.pack();
 

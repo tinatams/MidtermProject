@@ -22,19 +22,19 @@ import java.awt.*;
 import java.awt.geom.*;
 
 public class Circle implements DrawingObject {
-    public double x, y, s;
+    public double x, y, size;
     public Color color = new Color(41, 0, 36);
 
     public Circle(double x, double y, double s, Color color) {
         this.x = x;
         this.y = y;
-        this.s =s;
+        this.size =s;
         this.color = color;
     }
 
     @Override
     public void draw(Graphics2D g2d) {
-        Ellipse2D.Double circle = new Ellipse2D.Double(x, y, s,s);
+        Ellipse2D.Double circle = new Ellipse2D.Double(x, y, size, size);
         g2d.setColor(color);
         g2d.fill(circle);
 

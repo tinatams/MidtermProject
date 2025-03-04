@@ -27,7 +27,6 @@ import javax.swing.*;
 public class SceneCanvas extends JComponent {
     // put this so that it initializes inside of constructor;
     Background cave;
-    private ArrayList<DrawingObject> assests;
     private ArrayList<DrawingObject> endScreen;
 
     private Player user;
@@ -45,6 +44,7 @@ public class SceneCanvas extends JComponent {
     
 
     public SceneCanvas(){
+        setPreferredSize(new Dimension(800,600));
         endScreen = new ArrayList<DrawingObject>();
         setUpEndScreen();
 
@@ -61,7 +61,7 @@ public class SceneCanvas extends JComponent {
         gameOver = false;
         timeToReset = false;
 
-	background_highlights= new ArrayList<DrawingObject>();
+	    background_highlights= new ArrayList<DrawingObject>();
         background_highlights.add(new Crescent(200,130,new Color(252, 174, 25)));
         background_highlights.add(new Crescent(240,190,new Color(252, 174, 25)));
         background_highlights.add(new Crescent(200,240,new Color(252, 174, 25)));
@@ -93,9 +93,11 @@ public class SceneCanvas extends JComponent {
                 background_highlights.get(i).draw(g2d);
 	            g2d.translate(-500, -25);
             }
+            
             Rectangle2D.Double over = new Rectangle2D.Double(0, 0, 800, 600);
             g2d.setColor(new Color(94, 76, 74, 128));
             g2d.fill(over);
+
             for (DrawingObject object : endScreen){
                 object.draw(g2d);
             }
