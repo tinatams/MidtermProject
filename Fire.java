@@ -31,15 +31,15 @@ public class Fire implements DrawingObject {
 
 
     /**
-    Constructor that initiates the x and y position of the Fire object as well as how big it will be. It
-    also instansiates the other fields.
+        Constructor that initiates the x and y position of the Fire object as well as how big it will be. It
+        also instansiates the other fields.
 
-     @param x = x position and originalx
-     @param y = y position
-     @param scale = size/ scale of object
-     drawable = false (Default state)
-     attack = false (Default state)
-     **/
+        @param x = x position and originalx
+        @param y = y position
+        @param scale = size/ scale of object
+        drawable = false (Default state)
+        attack = false (Default state)
+    **/
 
     public Fire(int x, int y, double scale) {
         this.scale = scale;
@@ -52,14 +52,14 @@ public class Fire implements DrawingObject {
 
 
     /**
-     Instantiates three Circle objects to form the fire object. 
-     Before drawing, the g2d object is translated to its starting x and y coordinates 
-     in the scene and scaled according to the scale field.
-     
-     If the object is currently drawable then it draws the fire. And if the object is attacking
-     then the x position of the object is updated so that it moves to the right.
+        Instantiates three Circle objects to form the fire object. 
+        Before drawing, the g2d object is translated to its starting x and y coordinates 
+        in the scene and scaled according to the scale field.
+        
+        If the object is currently drawable then it draws the fire. And if the object is attacking
+        then the x position of the object is updated so that it moves to the right.
 
-     @param is Graphics2D object used to draw fire object
+        @param is Graphics2D object used to draw fire object
      **/
 
     @Override
@@ -90,26 +90,26 @@ public class Fire implements DrawingObject {
     }
 
     /**
-     Sets if the fire object is drawable
-     @param is the new value of drawable
-     **/
+        Sets if the fire object is drawable
+        @param is the new value of drawable
+    **/
     public void setDrawable(boolean d){
         drawable = d;
     }
 
     /**
-     Sets if the fire object is attacking
-     @param is the new value of attacking
-     **/
+        Sets if the fire object is attacking
+        @param is the new value of attacking
+    **/
     
     public void setAttacking(boolean a){
         attack = a;
     }
 
     /**
-     Sets the x position of the fire object, 
-     @param is the new value of x
-     **/
+        Sets the x position of the fire object, 
+        @param is the new value of x
+    **/
     public void setX(int x){
         this.x = x;
     }

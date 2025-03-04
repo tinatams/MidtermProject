@@ -45,7 +45,7 @@ public class Mob implements Entity{
     }
 
     public void takeDamage(int amount){
-        health.setCurrentHealth(health.getCurrentHealth()-amount); 
+        health.takeHealth(amount);
     }
 
     public int getHealth(){
