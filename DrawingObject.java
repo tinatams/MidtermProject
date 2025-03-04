@@ -23,10 +23,8 @@ import java.awt.*;
 
 public interface DrawingObject{
 	/**
-     Abstract class that accepts a Graphics2D object in order to draw a particular object
-
-     @param g2d = Graphics2D object to be use to draw graphics. 
-     **/
-	
+     	Abstract class that accepts a Graphics2D object in order to draw a particular object
+		@param g2d = Graphics2D object to be use to draw graphics. 
+    **/
     public void draw(Graphics2D g2d);
 }

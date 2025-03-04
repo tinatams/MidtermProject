@@ -24,16 +24,14 @@ import java.awt.event.KeyEvent;
 
 public interface Entity extends DrawingObject{
 	/**
-	 Updates the position and state of the entity object. 
-
-     @param KeyEvent e, Keyboard listener that stores what key is being pressed and adjusts objects state accordingly
+	 	Updates the position and state of the entity object. 
+		@param KeyEvent e, Keyboard listener that stores what key is being pressed and adjusts objects state accordingly
      **/
     public void update(KeyEvent e);
 
 	/**
-	 Updates the health of entity object
-
-     @param amount, accepts an integer amount to be removed from the objects health
-     **/
+	 	Updates the health of entity object
+     	@param amount, accepts an integer amount to be removed from the objects health
+    **/
     public void takeDamage(int amount);
 }
