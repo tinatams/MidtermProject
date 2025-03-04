@@ -103,8 +103,7 @@ public class Player implements Entity{
         }
 
         else if (code == KeyEvent.VK_A){
-            if (x < -380) move(speed);
-            move(-speed);
+            if (x > -380) move(-speed);
         }
 
         else if (code == KeyEvent.VK_Z){
