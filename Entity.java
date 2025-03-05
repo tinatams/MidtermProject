@@ -1,8 +1,6 @@
 /**
-    DrawingObject interphase is implemented by objects that are entities within the program/game. 
-	These entities take damage, have positions or attributes that need to be updated, and can be drawn. 
-	The interface imports the java.awt.event.KeyEvent object for updating the position and state of objects 
-	that implement the interface. 
+    DrawingObject interphase is implemented by objects that are entities within the program/game,
+	the interface is used to allow the entity to take damage. 
  
 	@author Martina Amale M. Llamas (242648); Zoe Angeli G. Uy (246707)
 	@version March 3, 2025
@@ -20,15 +18,7 @@
 	of my program.
 **/
 
-import java.awt.event.KeyEvent;
-
 public interface Entity extends DrawingObject{
-	/**
-	 	Updates the position and state of the entity object. 
-		@param KeyEvent e, Keyboard listener that stores what key is being pressed and adjusts objects state accordingly
-     **/
-    public void update(KeyEvent e);
-
 	/**
 	 	Updates the health of entity object
      	@param amount, accepts an integer amount to be removed from the objects health

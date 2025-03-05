@@ -22,7 +22,6 @@
 **/
 
 import java.awt.*;
-import java.awt.event.*;
 import java.awt.geom.*;
 
 public class Mob implements Entity{
@@ -105,11 +104,6 @@ public class Mob implements Entity{
         g2d.setTransform(reset);
     }
 
-    //idk if i should remove this tbh
-    public void update(KeyEvent e){
-        int code = e.getKeyCode();
-    }
-
     /**
 	 	Takes health from the mob's/objects health, by calling the takeHealth method on the HealthBar
         object of the mob object.
@@ -167,6 +161,11 @@ public class Mob implements Entity{
         version = newVersion;
     }
 
+    /** 
+		Uses Path2D.Double, Ellipse2D.Double, and Line objects to create the mob. Draws frame for
+        idle animation. 
+		@param Graphics2D object that allows the mob to be drawn. 
+	**/
     public void drawFrame1(Graphics2D g2d){
         RenderingHints rh = new RenderingHints( RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setRenderingHints(rh); //makes the rendering smoother
@@ -245,6 +244,11 @@ public class Mob implements Entity{
         g2d.setTransform(reset);
     }
 
+    /** 
+		Uses Path2D.Double and Ellipse2D.Double objects to create the mob. Draws frame for
+        attack animation. 
+		@param Graphics2D object that allows the mob to be drawn. 
+	**/
     public void drawFrame2(Graphics2D g2d){
         RenderingHints rh = new RenderingHints( RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setRenderingHints(rh); //makes the rendering smoother
@@ -324,6 +328,11 @@ public class Mob implements Entity{
         g2d.setTransform(reset);
     }
 
+    /** 
+		Uses Path2D.Double and Ellipse2D.Double objects to create the mob. Draws frame for
+        idle animation. 
+		@param Graphics2D object that allows the mob to be drawn. 
+	**/
     public void drawFrame3(Graphics2D g2d) {
         RenderingHints rh = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setRenderingHints(rh); //makes the rendering smoother
@@ -332,10 +341,6 @@ public class Mob implements Entity{
         g2d.translate(-220, -130); //this sets the original placement
         g2d.translate(-x, y); //moves it to where it wants to be on screen
         g2d.scale(scale, scale);
-
-        //hair 
-        //Cresent hair = new Cresent(-100, 300, 0.4, new Color(255, 87, 87));
-        //hair.draw(g2d);
 
         //base color body
         Path2D.Double baseBlob = new Path2D.Double();
@@ -406,6 +411,10 @@ public class Mob implements Entity{
         g2d.setTransform(reset);
     }
 
+    /** 
+		Uses Path2D.Double and Ellipse2D.Double objects to create the mob. Draws frame for DyingAnimation
+		@param Graphics2D object that allows the mob to be drawn. 
+	**/
     public void drawDyingFrame1(Graphics2D g2d){
         RenderingHints rh = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setRenderingHints(rh); //makes the rendering smoother
@@ -473,6 +482,10 @@ public class Mob implements Entity{
         g2d.setTransform(reset);
     }
 
+    /** 
+		Uses Path2D.Double and Ellipse2D.Double objects to create the mob. Draws frame for DyingAnimation
+		@param Graphics2D object that allows the mob to be drawn. 
+	**/
     public void drawDyingFrame2(Graphics2D g2d){
         RenderingHints rh = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setRenderingHints(rh); //makes the rendering smoother
@@ -526,6 +539,10 @@ public class Mob implements Entity{
         g2d.setTransform(reset);
     }
 
+    /** 
+		Uses Path2D.Double and Ellipse2D.Double objects to create the mob. Draws frame for DyingAnimation
+		@param Graphics2D object that allows the mob to be drawn. 
+	**/
     public void drawDyingFrame3(Graphics2D g2d){
         RenderingHints rh = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setRenderingHints(rh); //makes the rendering smoother
