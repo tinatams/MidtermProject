@@ -86,7 +86,7 @@ public class Player implements Entity{
     }
 
     public void takeDamage(int amount){ //Lessens health by specific amount
-        health.setCurrentHealth(health.getCurrentHealth()-amount); 
+        health.takeHealth(amount); 
     }
 
     public double getX(){ //Returns value of x
