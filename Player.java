@@ -1,5 +1,7 @@
 /**
-    Health Bar Class
+    Player Class that implements Entity and contains an instance of the HealthBar object, the name of the player,
+    as well as variables to determine the location of where in the frame the entity is drawn. It also contains a way to shift which frame
+    is drawn depending on the actions of the user. It initializes different shapes and calls the draw or fill functions respectively.
  
 	@author Martina Amale M. Llamas (242648); Zoe Angeli G. Uy (246707)
 	@version March 3, 2025
@@ -15,6 +17,9 @@
 	was obtained from another source, such as a textbook or website, 
 	that has been clearly noted with a proper citation in the comments 
 	of my program.
+
+    
+
 **/
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -31,11 +36,11 @@ public class Player implements Entity{
 
     private boolean drawable;
 
-    public void setSpeed(int speed) {
+    public void setSpeed(int speed) { //Mutator method for speed field
         this.speed = speed;
     }
 
-    public Player(int x, int y){
+    public Player(int x, int y){ //Constructor for Player class gets wanted position and sets the frames for constant bounce movement
         this.x = x;
         this.y = y;
         version = 1;
@@ -43,7 +48,7 @@ public class Player implements Entity{
         drawable = true;
     }
 
-    public void draw(Graphics2D g2d){
+    public void draw(Graphics2D g2d){ //Draw method that decides which frame to draw on screen depending on user action
         if (drawable){
             if (version == 60 || version ==130 || version==200){
                 version = 1;
@@ -80,30 +85,30 @@ public class Player implements Entity{
         
     }
 
-    public void takeDamage(int amount){
-        health.takeHealth(amount); 
+    public void takeDamage(int amount){ //Lessens health by specific amount
+        health.setCurrentHealth(health.getCurrentHealth()-amount); 
     }
 
-    public double getX(){
+    public double getX(){ //Returns value of x
         return x;
     }
-    public int getHealth(){
+    public int getHealth(){ //Returns value of health
         return health.getCurrentHealth();
     }
 
-    public HealthBar getHealthBar(){
+    public HealthBar getHealthBar(){ //Returns HealthBar
         return health;
     }
 
-    public void update(KeyEvent e){
+    public void update(KeyEvent e){ //Depending on what key is pressed, it changes where the entity moves or a different set of frames gets drawn.
         int code = e.getKeyCode();
 
         if (code == KeyEvent.VK_D){
-            if (x < 80) move(speed);
+            move(speed);
         }
 
         else if (code == KeyEvent.VK_A){
-            if (x > -380) move(-speed);
+            move(-speed);
         }
 
         else if (code == KeyEvent.VK_Z){
@@ -115,12 +120,12 @@ public class Player implements Entity{
         }
     }
 
-    public void move(int moving){
+    public void move(int moving){ //adds an integer value into the x to "move" the drawn entity
         x += moving;
     }
 
 
-    public void drawFrame1(Graphics2D g2d){
+    public void drawFrame1(Graphics2D g2d){ //First idle movement frame for the bounce (weight on the hind leg)
         Circle head = new Circle(630.69+x, 233.78+y, 45,new Color(41, 0, 36));
         Circle left_hand = new Circle(604.61+x, 300.84+y,29,new Color(41, 0, 36));
         Circle right_hand = new Circle(605.39+x, 280.21+y,29,new Color(41, 0, 36));
@@ -163,7 +168,7 @@ public class Player implements Entity{
 
         AffineTransform originalTransform = g2d.getTransform();
 
-        g2d.rotate(Math.toRadians(-10),347+x,250+y);  // Rotate 10 degrees
+        g2d.rotate(Math.toRadians(-10),347+x,250+y);
         g2d.setColor(new Color(41, 0, 36));
         g2d.fill(mid_torso);
 
@@ -194,7 +199,7 @@ public class Player implements Entity{
         g2d.setTransform(originalTransform);
     }
 
-    public void drawFrame2(Graphics2D g2d){
+    public void drawFrame2(Graphics2D g2d){ //Second idle movement frame for the bounce (weight on the front leg)
         double x1=-21.25+x;
         double y1=-6.18+y;
         double move_x,move_y;
@@ -243,7 +248,7 @@ public class Player implements Entity{
 
         AffineTransform originalTransform = g2d.getTransform();
 
-        g2d.rotate(Math.toRadians(-10),347+x1,250+y1);  // Rotate 10 degrees
+        g2d.rotate(Math.toRadians(-10),347+x1,250+y1);  
         g2d.setColor(new Color(41, 0, 36));
         g2d.fill(mid_torso);
 
@@ -278,7 +283,7 @@ public class Player implements Entity{
 
     }
 
-    public void PunchFrame1(Graphics2D g2d){
+    public void PunchFrame1(Graphics2D g2d){ //First punch movement frame "transition frame" to full extension
         double x1=-21.25+x;
         double y1=-6.18+y;
         double move_x,move_y;
@@ -328,7 +333,7 @@ public class Player implements Entity{
 
         AffineTransform originalTransform = g2d.getTransform();
 
-        g2d.rotate(Math.toRadians(-10),347+x1,250+y1);  // Rotate 10 degrees
+        g2d.rotate(Math.toRadians(-10),347+x1,250+y1);  
         g2d.setColor(new Color(41, 0, 36));
         g2d.fill(mid_torso);
 
@@ -367,7 +372,7 @@ public class Player implements Entity{
 
     }
 
-    public void PunchFrame2(Graphics2D g2d){
+    public void PunchFrame2(Graphics2D g2d){ //Second punch movement frame (full extension)
         double x1=-21.25+x;
         double y1=-6.18+y;
         double move_x,move_y;
@@ -416,7 +421,7 @@ public class Player implements Entity{
 
         AffineTransform originalTransform = g2d.getTransform();
 
-        g2d.rotate(Math.toRadians(-10),347+x1,250+y1);  // Rotate 10 degrees
+        g2d.rotate(Math.toRadians(-10),347+x1,250+y1); 
         g2d.setColor(new Color(41, 0, 36));
         g2d.fill(mid_torso);
 
@@ -451,7 +456,7 @@ public class Player implements Entity{
 
     }
 
-    public void KickFrame1(Graphics2D g2d){
+    public void KickFrame1(Graphics2D g2d){ //First Kick movement frame "transition frame" to full extension
         double x1=-21.25+x;
         double y1=-31.18+y;
         double move_x,move_y;
@@ -500,7 +505,7 @@ public class Player implements Entity{
 
         AffineTransform originalTransform = g2d.getTransform();
 
-        g2d.rotate(Math.toRadians(-10),347+x1,250+y1);  // Rotate 10 degrees
+        g2d.rotate(Math.toRadians(-10),347+x1,250+y1); 
         g2d.setColor(new Color(41, 0, 36));
         g2d.fill(mid_torso);
 
@@ -535,7 +540,7 @@ public class Player implements Entity{
 
     }
 
-    public void KickFrame2(Graphics2D g2d){
+    public void KickFrame2(Graphics2D g2d){ //Second Kick movement frame (full extension)
         double x1=-21.25+x;
         double y1=-31.18+y;
         double r=20;
@@ -606,19 +611,19 @@ public class Player implements Entity{
 
     }
 
-    public int getVersion() {
+    public int getVersion() { //Returns value of version.
         return version;
     }
 
-    public void setVersion(int version) {
+    public void setVersion(int version) { //Sets value of version to a certain number
         this.version = version;
     }
 
-    public boolean getDrawable() {
+    public boolean getDrawable() { //Returns value of drawable
         return drawable;
     }
 
-    public void setDrawable(boolean drawable) {
+    public void setDrawable(boolean drawable) {  //Sets value of version to true or false
         this.drawable = drawable;
     }
 }

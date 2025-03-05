@@ -1,5 +1,6 @@
 /**
-    Health Bar Class
+    Stone1 class that implements DrawingObject interphase. Stone1 uses instances of the Square class to create the shape, 
+    and calls the draw method to draw it on the canvas. 
  
 	@author Martina Amale M. Llamas (242648); Zoe Angeli G. Uy (246707)
 	@version March 3, 2025
@@ -18,7 +19,6 @@
 **/
 
 import java.awt.*;
-import java.awt.geom.*;
 
 public class Stone1 implements DrawingObject{
     public double x, y;
@@ -26,12 +26,12 @@ public class Stone1 implements DrawingObject{
     public Color orange= new Color(200, 96, 78);
     public Color wine_red= new Color(115, 39, 71);
 
-    public Stone1(double x, double y) {
+    public Stone1(double x, double y) { //Constructor that gets the wanted position for the Stone1
         this.x = x;
         this.y = y;
     }
     @Override
-    public void draw(Graphics2D g2d) {
+    public void draw(Graphics2D g2d) { //Creates instances of squares and calls the draw method for each
         Square square = new Square(x, y+4.5*3, 4.5,orange);
         Square square2 = new Square(x+4.5, y+4.5*3, 4.5,beige);
         Square square3 = new Square(x+4.5*2, y+4.5*3, 4.5,beige);

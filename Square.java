@@ -1,5 +1,5 @@
 /**
-    Square... Rectangle (?) class that implements DrawingObject interphase. The class uses Rectangle2D.Double 
+    Square class that implements DrawingObject interphase. The class uses Rectangle2D.Double 
     object from java.awt.geom package to create the shape, and g2d object to fill in the shape. 
  
 	@author Martina Amale M. Llamas (242648); Zoe Angeli G. Uy (246707)
@@ -22,27 +22,22 @@ import java.awt.*;
 import java.awt.geom.*;
 
 public class Square implements DrawingObject{
-    public double x, y, size;
+    public double x, y, s;
     public Color color;
 
-     public Square(double x, double y, double s, Color color) {
+     public Square(double x, double y, double s, Color color) { //Constructor gets the wanted position for the square, size of the side of the square and color
         this.x = x;
         this.y = y;
-        this.size = s;
+        this.s = s;
         this.color = color;
     }
 
     @Override
-    public void draw(Graphics2D g2d) {
-        Rectangle2D.Double square = new Rectangle.Double(x, y, size, size);
+    public void draw(Graphics2D g2d) { //Uses Rectangle2D.Double to create the square, fills it with desired color.
+        Rectangle2D.Double square = new Rectangle.Double(x, y, s,s);
         g2d.setColor(color);
         g2d.fill(square);
     }
 
-    public void draw(Graphics2D g2d, Color color) {
-        Rectangle2D.Double square = new Rectangle.Double(x, y, size, size);
-        g2d.setColor(color);
-        g2d.fill(square);
-    }
 
 }

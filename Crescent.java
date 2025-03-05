@@ -25,14 +25,14 @@ public class Crescent implements DrawingObject {
     public double x, y;
     public Color color;
 
-    public Crescent(double x, double y,Color color) {
-        this.x = x;
+    public Crescent(double x, double y,Color color) { //Constructor gets the wanted position for the crescent and desired color
+        this.x = x; 
         this.y = y;
         this.color=color;
     }
 
     @Override
-    public void draw(Graphics2D g2d) {
+    public void draw(Graphics2D g2d) { //Creates paths and fills them in
         Path2D.Double crv = new
         Path2D.Double();
         crv.moveTo(x,y);
