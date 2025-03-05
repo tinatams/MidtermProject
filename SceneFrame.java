@@ -110,7 +110,7 @@ public class SceneFrame{
             }
         };
 
-        timer.scheduleAtFixedRate(task, 0, 9);
+        timer.scheduleAtFixedRate(task, 0, 10);
     }
 
     
